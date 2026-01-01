@@ -1,0 +1,23 @@
+==================
+Class Declaration
+==================
+
+class MyClass {}
+public class PublicClass {}
+internal abstract class AbstractClass {}
+class Child extends Parent {}
+class Impl implements InterfaceA, InterfaceB {}
+class Complex extends Base implements A, B {
+  var field : int
+}
+
+---
+
+(source_file
+  (class_declaration (identifier) (class_body))
+  (class_declaration (modifiers) (identifier) (class_body))
+  (class_declaration (modifiers) (identifier) (class_body))
+  (class_declaration (identifier) (type_reference (identifier)) (class_body))
+  (class_declaration (identifier) (type_reference (identifier)) (type_reference (identifier)) (class_body))
+  (class_declaration (identifier) (type_reference (identifier)) (type_reference (identifier)) (type_reference (identifier)) (class_body (local_variable_declaration (identifier) (primitive_type))))
+)

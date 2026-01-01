@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<webservice-collection xmlns="http://guidewire.com/config/webservicecollection">
+  <resources>
+    <resource>
+      <url>${bc}/ws/nz/co/acc/plm/integration/webservices/OutboundFilesAPI?WSDL</url>
+    </resource>
+  </resources>
+  <settings>
+    <configuration-provider>
+      <env/>
+      <server/>
+      <type-name>wsi.remote.gw.webservice.bc.BCConfigurationProvider</type-name>
+    </configuration-provider>
+  </settings>
+</webservice-collection>

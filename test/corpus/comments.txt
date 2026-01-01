@@ -1,0 +1,15 @@
+==================
+Comments
+==================
+
+// Line comment
+/* Block comment */
+identifier
+
+---
+
+(source_file
+  (line_comment)
+  (block_comment)
+  (expression_statement (identifier))
+)

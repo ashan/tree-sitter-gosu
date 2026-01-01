@@ -1,0 +1,21 @@
+==================
+Simplified Types
+==================
+
+int
+String
+java.lang.String
+int[]
+String[]
+String[][]
+
+---
+
+(source_file
+  (primitive_type)
+  (expression_statement (identifier))
+  (expression_statement (member_access (member_access (identifier) (identifier)) (identifier)))
+  (array_type (primitive_type))
+  (array_type (type_reference (identifier)))
+  (array_type (array_type (type_reference (identifier))))
+)

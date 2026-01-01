@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.acc.org.nz/XML/Schema" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="GNAUpdateSchema" type="sch:GNAUpdateSchemaType" xmlns:sch="http://www.acc.org.nz/XML/Schema"/>
+  <xs:complexType name="ACCStandardTrailerType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="end_of_run_description"/>
+      <xs:element type="xs:string" name="end_of_run_time"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GNAUpdateSchemaType">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element type="sch:ACCStandardHeaderType" name="ACCStandardHeader" xmlns:sch="http://www.acc.org.nz/XML/Schema"/>
+      <xs:element type="sch:GNAHeaderType" name="GNAHeader" xmlns:sch="http://www.acc.org.nz/XML/Schema"/>
+      <xs:element type="sch:GNAUpdateType" name="GNAUpdate" xmlns:sch="http://www.acc.org.nz/XML/Schema"/>
+      <xs:element type="sch:ACCStandardTrailerType" name="ACCStandardTrailer" xmlns:sch="http://www.acc.org.nz/XML/Schema"/>
+    </xs:choice>
+  </xs:complexType>
+  <xs:complexType name="DocumentToType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="org_domain"/>
+      <xs:element type="xs:string" name="credential_id"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="StatusType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="code"/>
+      <xs:element type="xs:string" name="text"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ACCStandardHeaderType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="copyright"/>
+      <xs:element type="sch:DocumentFromType" name="DocumentFrom" xmlns:sch="http://www.acc.org.nz/XML/Schema"/>
+      <xs:element type="sch:DocumentToType" name="DocumentTo" xmlns:sch="http://www.acc.org.nz/XML/Schema"/>
+      <xs:element type="sch:DocumentSenderType" name="DocumentSender" xmlns:sch="http://www.acc.org.nz/XML/Schema"/>
+      <xs:element type="xs:string" name="deployment_mode"/>
+      <xs:element type="sch:StatusType" name="Status" xmlns:sch="http://www.acc.org.nz/XML/Schema"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DocumentSenderType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="org_domain"/>
+      <xs:element type="xs:string" name="credential_id"/>
+      <xs:element type="xs:string" name="sender_mailbox"/>
+      <xs:element type="xs:string" name="shared"/>
+      <xs:element type="xs:string" name="agent"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DocumentFromType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="org_domain"/>
+      <xs:element type="xs:string" name="credential_id"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GNAUpdateType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="invoice_number"/>
+      <xs:element name="gna_version_number">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GNAHeaderType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="creation_date"/>
+      <xs:element type="xs:string" name="record_count"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

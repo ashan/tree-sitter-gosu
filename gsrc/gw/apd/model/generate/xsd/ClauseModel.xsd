@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:complexType name="Terms">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element name="DirectCovTermPattern" maxOccurs="unbounded" minOccurs="0">
+        <xs:complexType>
+          <xs:all>
+            <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+            <xs:element name="LimitsSet" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CovTermLimits" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                      <xs:attribute type="xs:string" name="codeIdentifier"/>
+                      <xs:attribute type="xs:string" name="currency"/>
+                      <xs:attribute type="xs:decimal" name="defaultValue" use="optional"/>
+                      <xs:attribute type="xs:decimal" name="minVal" use="optional"/>
+                      <xs:attribute type="xs:decimal" name="maxVal" use="optional"/>
+                      <xs:attribute type="xs:string" name="public-id"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:all>
+          <xs:attribute type="xs:string" name="aggregationModel" use="optional"/>
+          <xs:attribute type="xs:string" name="codeIdentifier"/>
+          <xs:attribute type="xs:string" name="coverageColumn"/>
+          <xs:attribute type="xs:string" name="lookupTableName"/>
+          <xs:attribute type="xs:string" name="modelType" use="optional"/>
+          <xs:attribute type="xs:integer" name="priority"/>
+          <xs:attribute type="xs:string" name="public-id"/>
+          <xs:attribute type="xs:boolean" name="required"/>
+          <xs:attribute type="xs:string" name="restrictionModel" use="optional"/>
+          <xs:attribute type="xs:string" name="refCode" use="optional"/>
+          <xs:attribute type="xs:string" name="valueType"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="OptionCovTermPattern" maxOccurs="unbounded" minOccurs="0">
+        <xs:complexType>
+          <xs:all>
+            <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+            <xs:element name="Options" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CovTermOpt" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                      <xs:all>
+                        <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+                      </xs:all>
+                      <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                      <xs:attribute type="xs:string" name="currency" use="optional"/>
+                      <xs:attribute type="xs:string" name="optionCode" use="optional"/>
+                      <xs:attribute type="xs:integer" name="priority" use="optional"/>
+                      <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                      <xs:attribute type="xs:decimal" name="value" use="optional"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="DefaultsSet" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CovTermDefault" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                      <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                      <xs:attribute type="xs:string" name="currency" use="optional"/>
+                      <xs:attribute type="xs:string" name="defaultValue" use="optional"/>
+                      <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:all>
+          <xs:attribute type="xs:string" name="aggregationModel" use="optional"/>
+          <xs:attribute type="xs:string" name="choiceLookupTableName" use="optional"/>
+          <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+          <xs:attribute type="xs:string" name="coverageColumn" use="optional"/>
+          <xs:attribute type="xs:string" name="lookupTableName" use="optional"/>
+          <xs:attribute type="xs:string" name="modelType" use="optional"/>
+          <xs:attribute type="xs:string" name="priority" use="optional"/>
+          <xs:attribute type="xs:string" name="public-id" use="optional"/>
+          <xs:attribute type="xs:string" name="required" use="optional"/>
+          <xs:attribute type="xs:string" name="restrictionModel" use="optional"/>
+          <xs:attribute type="xs:string" name="refCode" use="optional"/>
+          <xs:attribute type="xs:string" name="valueType" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="PackageCovTermPattern" maxOccurs="unbounded" minOccurs="0">
+        <xs:complexType>
+          <xs:all>
+            <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+            <xs:element name="Packages">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CovTermPack" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="PackageTerms" minOccurs="0">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="PackageTerm" maxOccurs="unbounded" minOccurs="0">
+                                <xs:complexType>
+                                  <xs:attribute type="xs:string" name="aggregationModel" use="optional"/>
+                                  <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                                  <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                                  <xs:attribute type="xs:string" name="restrictionModel" use="optional"/>
+                                  <xs:attribute type="xs:decimal" name="value" use="optional"/>
+                                  <xs:attribute type="xs:string" name="valueType" use="optional"/>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                      <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                      <xs:attribute type="xs:string" name="currency" use="optional"/>
+                      <xs:attribute type="xs:string" name="packageCode" use="optional"/>
+                      <xs:attribute type="xs:integer" name="priority" use="optional"/>
+                      <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="DefaultsSet" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CovTermDefault" maxOccurs="unbounded" minOccurs="0">
+                    <xs:complexType>
+                      <xs:attribute type="xs:string" name="codeIdentifier"/>
+                      <xs:attribute type="xs:string" name="currency"/>
+                      <xs:attribute type="xs:string" name="defaultValue"/>
+                      <xs:attribute type="xs:string" name="public-id"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:all>
+          <xs:attribute type="xs:string" name="choiceLookupTableName"/>
+          <xs:attribute type="xs:string" name="codeIdentifier"/>
+          <xs:attribute type="xs:string" name="coverageColumn"/>
+          <xs:attribute type="xs:string" name="lookupTableName"/>
+          <xs:attribute type="xs:string" name="modelType"/>
+          <xs:attribute type="xs:integer" name="priority"/>
+          <xs:attribute type="xs:string" name="public-id"/>
+          <xs:attribute type="xs:string" name="refCode"/>
+          <xs:attribute type="xs:boolean" name="required"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="TypekeyCovTermPattern" maxOccurs="unbounded" minOccurs="0">
+        <xs:complexType>
+          <xs:all>
+            <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+          </xs:all>
+          <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+          <xs:attribute type="xs:string" name="coverageColumn" use="optional"/>
+          <xs:attribute type="xs:string" name="defaultValue" use="optional"/>
+          <xs:attribute type="xs:string" name="lookupTableName" use="optional"/>
+          <xs:attribute type="xs:string" name="modelType" use="optional"/>
+          <xs:attribute type="xs:integer" name="priority" use="optional"/>
+          <xs:attribute type="xs:string" name="public-id" use="optional"/>
+          <xs:attribute type="xs:boolean" name="required" use="optional"/>
+          <xs:attribute type="xs:string" name="refCode" use="optional"/>
+          <xs:attribute type="xs:string" name="typefilter" use="optional"/>
+          <xs:attribute type="xs:string" name="typelist" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GenericCovTermPattern" maxOccurs="unbounded" minOccurs="0">
+        <xs:complexType>
+          <xs:all>
+            <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+          </xs:all>
+          <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+          <xs:attribute type="xs:string" name="coverageColumn" use="optional"/>
+          <xs:attribute type="xs:string" name="defaultValue" use="optional"/>
+          <xs:attribute type="xs:string" name="lookupTableName" use="optional"/>
+          <xs:attribute type="xs:string" name="modelType" use="optional"/>
+          <xs:attribute type="xs:integer" name="priority" use="optional"/>
+          <xs:attribute type="xs:string" name="public-id" use="optional"/>
+          <xs:attribute type="xs:boolean" name="required" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+
+  <xs:complexType name="Schedules">
+    <xs:all>
+      <xs:element name="ClauseSchedulePattern" minOccurs="0">
+        <xs:complexType>
+          <xs:all>
+            <xs:element name="ScheduledItemProperties" minOccurs="0">
+              <xs:complexType>
+                <xs:choice maxOccurs="unbounded" minOccurs="0">
+                  <xs:element name="ScheduledItemPropertyPattern" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                      <xs:attribute type="xs:string" name="column" use="optional"/>
+                      <xs:attribute type="xs:boolean" name="identity" use="optional"/>
+                      <xs:attribute type="xs:integer" name="priority" use="optional"/>
+                      <xs:attribute type="xs:string" name="propertyName" use="optional"/>
+                      <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                      <xs:attribute type="xs:boolean" name="required" use="optional"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="TypekeyScheduledItemPropertyPattern" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                      <xs:attribute type="xs:string" name="column" use="optional"/>
+                      <xs:attribute type="xs:boolean" name="identity" use="optional"/>
+                      <xs:attribute type="xs:integer" name="priority" use="optional"/>
+                      <xs:attribute type="xs:string" name="propertyName" use="optional"/>
+                      <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                      <xs:attribute type="xs:boolean" name="required" use="optional"/>
+                      <xs:attribute type="xs:string" name="typelist" use="optional"/>
+                      <xs:attribute type="xs:string" name="typefilter" use="optional"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="FKScheduledItemPropertyPattern" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                      <xs:attribute type="xs:string" name="column" use="optional"/>
+                      <xs:attribute type="xs:boolean" name="identity" use="optional"/>
+                      <xs:attribute type="xs:integer" name="priority" use="optional"/>
+                      <xs:attribute type="xs:string" name="propertyName" use="optional"/>
+                      <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                      <xs:attribute type="xs:boolean" name="required" use="optional"/>
+                      <xs:attribute type="xs:string" name="valueRangeGetter" use="optional"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:choice>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="ScheduledItemClauseLinkages" minOccurs="0" maxOccurs="1">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ScheduledItemClauseLink" minOccurs="1" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:attribute type="xs:string" name="codeIdentifier"/>
+                      <xs:attribute type="xs:string" name="linkedClausePattern"/>
+                      <xs:attribute type="xs:string" name="public-id"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:all>
+          <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+          <xs:attribute type="xs:integer" name="priority" use="optional"/>
+          <xs:attribute type="xs:string" name="public-id" use="optional"/>
+          <xs:attribute type="xs:boolean" name="required" use="optional"/>
+          <xs:attribute type="xs:string" name="mostDescriptiveProperty" use="optional"/>
+          <xs:attribute type="xs:string" name="scheduledItemType" use="optional"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:all>
+  </xs:complexType>
+  
+  <xs:element name="CoveragePattern">
+    <xs:complexType>
+      <xs:all>
+        <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+        <xs:element type="xs:string" name="ExistenceScript" minOccurs="0"/>
+        <xs:element type="xs:string" name="InitializeScript" minOccurs="0"/>
+        <xs:element type="xs:string" name="OnRemovalScript" minOccurs="0"/>
+        <xs:element type="Terms" name="CovTerms" minOccurs="0"/>
+        <xs:element type="Schedules" name="Schedules" minOccurs="0"/>
+      </xs:all>
+      <xs:attribute type="xs:string" name="blanketGroupType" use="optional"/>
+      <xs:attribute type="xs:string" name="codeIdentifier"/>
+      <xs:attribute type="xs:string" name="coverageCategory"/>
+      <xs:attribute type="xs:string" name="coverageSubtype"/>
+      <xs:attribute type="xs:string" name="coveredPartyType" use="optional"/>
+      <xs:attribute type="xs:string" name="existence"/>
+      <xs:attribute type="xs:string" name="lookupTableName"/>
+      <xs:attribute type="xs:string" name="owningEntityType"/>
+      <xs:attribute type="xs:string" name="policyLinePattern"/>
+      <xs:attribute type="xs:integer" name="priority"/>
+      <xs:attribute type="xs:string" name="public-id"/>
+      <xs:attribute type="xs:string" name="refCode" use="optional"/>
+      <xs:attribute type="xs:string" name="referenceDateByType"/>
+      <xs:attribute type="xs:string" name="rICoverageGroupType" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ExclusionPattern">
+    <xs:complexType>
+      <xs:all>
+        <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+        <xs:element type="xs:string" name="ExistenceScript" minOccurs="0"/>
+        <xs:element type="xs:string" name="InitializeScript" minOccurs="0"/>
+        <xs:element type="xs:string" name="OnRemovalScript" minOccurs="0"/>
+        <xs:element type="Terms" name="CovTerms" minOccurs="0"/>
+        <xs:element type="Schedules" name="Schedules" minOccurs="0"/>
+      </xs:all>
+      <xs:attribute type="xs:string" name="codeIdentifier"/>
+      <xs:attribute type="xs:string" name="coverageCategory"/>
+      <xs:attribute type="xs:string" name="exclusionSubtype"/>
+      <xs:attribute type="xs:string" name="existence"/>
+      <xs:attribute type="xs:string" name="lookupTableName"/>
+      <xs:attribute type="xs:string" name="owningEntityType"/>
+      <xs:attribute type="xs:string" name="policyLinePattern"/>
+      <xs:attribute type="xs:integer" name="priority"/>
+      <xs:attribute type="xs:string" name="public-id"/>
+      <xs:attribute type="xs:string" name="refCode" use="optional"/>
+      <xs:attribute type="xs:string" name="referenceDateByType"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ConditionPattern">
+    <xs:complexType>
+      <xs:all>
+        <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+        <xs:element type="xs:string" name="ExistenceScript" minOccurs="0"/>
+        <xs:element type="xs:string" name="InitializeScript" minOccurs="0"/>
+        <xs:element type="xs:string" name="OnRemovalScript" minOccurs="0"/>
+        <xs:element type="Terms" name="CovTerms" minOccurs="0"/>
+        <xs:element type="Schedules" name="Schedules" minOccurs="0"/>
+      </xs:all>
+      <xs:attribute type="xs:string" name="codeIdentifier"/>
+      <xs:attribute type="xs:string" name="coverageCategory"/>
+      <xs:attribute type="xs:string" name="conditionSubtype"/>
+      <xs:attribute type="xs:string" name="existence"/>
+      <xs:attribute type="xs:string" name="lookupTableName"/>
+      <xs:attribute type="xs:string" name="owningEntityType"/>
+      <xs:attribute type="xs:string" name="policyLinePattern"/>
+      <xs:attribute type="xs:integer" name="priority"/>
+      <xs:attribute type="xs:string" name="public-id"/>
+      <xs:attribute type="xs:string" name="refCode" use="optional"/>
+      <xs:attribute type="xs:string" name="referenceDateByType"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

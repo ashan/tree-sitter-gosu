@@ -1,0 +1,22 @@
+==================
+Package, Uses, Annotations
+==================
+
+package com.example.gosu
+uses java.util.List
+@Override
+function foo() {}
+@RequestScoped
+class MyController {}
+@Named("foo")
+var x = 10;
+
+---
+
+(source_file
+  (package_declaration (type_reference (identifier) (identifier) (identifier)))
+  (uses_statement (type_reference (identifier) (identifier) (identifier)))
+  (function_declaration (modifiers (annotation (type_reference (identifier)))) (identifier) (parameter_list) (block))
+  (class_declaration (modifiers (annotation (type_reference (identifier)))) (identifier) (class_body))
+  (local_variable_declaration (modifiers (annotation (type_reference (identifier)) (argument_list (string_template (string_content))))) (identifier) (number_literal))
+)

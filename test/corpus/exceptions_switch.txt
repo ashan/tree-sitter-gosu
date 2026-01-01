@@ -1,0 +1,36 @@
+==================
+Exceptions & Switch
+==================
+
+try {
+  throw new Exception()
+} catch (e : Exception) {
+  print(e)
+} finally {
+  cleanup()
+}
+
+switch (x) {
+  case 1:
+    print("one")
+    break
+  default:
+    print("other")
+}
+
+do {
+  x++
+} while(x < 10)
+
+---
+
+(source_file
+  (try_statement
+    (block (throw_statement (new_expression (type_reference (identifier)) (argument_list))))
+    (catch_clause (identifier) (type_reference (identifier)) (block (expression_statement (call_expression (identifier) (argument_list (identifier))))))
+    (finally_clause (block (expression_statement (call_expression (identifier) (argument_list))))))
+  (switch_statement (identifier)
+    (case_clause (number_literal) (expression_statement (call_expression (identifier) (argument_list (string_template (string_content))))) (expression_statement (identifier)))
+    (default_clause (expression_statement (call_expression (identifier) (argument_list (string_template (string_content)))))))
+  (do_statement (block (expression_statement (update_expression (identifier)))) (binary_expression (identifier) (number_literal)))
+)

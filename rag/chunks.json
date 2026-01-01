@@ -1,0 +1,1102 @@
+[
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/webservice/WsdlConfigTestUtil.gs:15-17",
+    "text": "  private construct() {\n    // no instances allowed\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/webservice/WsdlConfigTestUtil.gs",
+      "start_line": 15,
+      "end_line": 17,
+      "type": "constructor_declaration",
+      "context": "class_declaration WsdlConfigTestUtil"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/webservice/WsdlConfigTestUtil.gs:22-24",
+    "text": "  static function newConfig() : WsdlConfig {\n    return newConfig(DEFAULT_USER, DEFAULT_PASSWORD)\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/webservice/WsdlConfigTestUtil.gs",
+      "start_line": 22,
+      "end_line": 24,
+      "type": "function_declaration",
+      "context": "class_declaration WsdlConfigTestUtil"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/webservice/WsdlConfigTestUtil.gs:29-34",
+    "text": "  static function newConfig(username : String, password : String) : WsdlConfig {\n    var config = new WsdlConfig()\n    config.Guidewire.Authentication.Username = username == null ? DEFAULT_USER : username\n    config.Guidewire.Authentication.Password = password == null ? DEFAULT_PASSWORD : password\n    return config\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/webservice/WsdlConfigTestUtil.gs",
+      "start_line": 29,
+      "end_line": 34,
+      "type": "function_declaration",
+      "context": "class_declaration WsdlConfigTestUtil"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs:16-20",
+    "text": "  construct(referrer : Object, referrerProperty : PropertyReference<Object,SpecialistService>, hierarchyLevel : int) {\n    _referrer = referrer\n    _referrerProperty = referrerProperty\n    _hierarchyLevel = hierarchyLevel\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs",
+      "start_line": 16,
+      "end_line": 20,
+      "type": "constructor_declaration",
+      "context": "class_declaration SpecialistServiceReferenceEditHelper"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs:22-25",
+    "text": "  construct(referrer : Object, hierarchyLevel : int) {\n    _referrer = referrer\n    _hierarchyLevel = hierarchyLevel\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs",
+      "start_line": 22,
+      "end_line": 25,
+      "type": "constructor_declaration",
+      "context": "class_declaration SpecialistServiceReferenceEditHelper"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs:27-29",
+    "text": "  private property get ReferencedServiceAncestry() : List<SpecialistService> {\n    return _referrerProperty != null ? _referrerProperty.get(_referrer).Ancestry : (_referrer as SpecialistService).Ancestry as List<SpecialistService>\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs",
+      "start_line": 27,
+      "end_line": 29,
+      "type": "property_get_declaration",
+      "context": "class_declaration SpecialistServiceReferenceEditHelper"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs:34-37",
+    "text": "  property get Value() : SpecialistService {\n    var ancestry = ReferencedServiceAncestry\n    return _hierarchyLevel < ancestry.Count ? ancestry[_hierarchyLevel] : null\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs",
+      "start_line": 34,
+      "end_line": 37,
+      "type": "property_get_declaration",
+      "context": "class_declaration SpecialistServiceReferenceEditHelper"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs:63-69",
+    "text": "  property get RootSpecialistServices() : List<SpecialistService> {\n      return Query.make(SpecialistService)\n                  // find all root SpecialistServices -- those without a parent\n                  .subselect(SpecialistService#ID, CompareNotIn, SpecialistServiceParent#Owner)\n                  .select()\n                  .toList()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs",
+      "start_line": 63,
+      "end_line": 69,
+      "type": "property_get_declaration",
+      "context": "class_declaration SpecialistServiceReferenceEditHelper"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs:75-89",
+    "text": "  property get ValueRange() : List<SpecialistService> {\n    var result : List<SpecialistService>\n    if (_hierarchyLevel == 0) {\n      result = RootSpecialistServices\n    } else {\n      var ancestry = ReferencedServiceAncestry\n      if (_hierarchyLevel-1 < ancestry.Count) {\n        result = ancestry[_hierarchyLevel-1].Children.toList()\n      } else {\n        result = new ArrayList<SpecialistService>()\n      }\n    }\n    Collections.sort(result, SpecialistService.StandardComparator)\n    return result\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs",
+      "start_line": 75,
+      "end_line": 89,
+      "type": "property_get_declaration",
+      "context": "class_declaration SpecialistServiceReferenceEditHelper"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs:42-61",
+    "text": "  property set Value(newVal : SpecialistService) {\n    if (newVal != Value) {\n      if (newVal != null) {\n        var newValAncestry = newVal.Ancestry\n        if (newValAncestry.Count-1 != _hierarchyLevel) {\n          throw new IllegalArgumentException(\"new value (\" + newVal.Code + \") does not appear at hierarchy level \" + _hierarchyLevel)\n        }\n        _referrerProperty.set(_referrer, newVal)\n      } else {\n        if (_hierarchyLevel == 0) {\n          _referrerProperty.set(_referrer, null)\n        } else {\n          var currentValAncestry = Value.Ancestry\n          if (_hierarchyLevel <= currentValAncestry.Count-1) {\n            _referrerProperty.set(_referrer, currentValAncestry[_hierarchyLevel-1])\n          } // else a null value is consistent with the current value, so do nothing\n        }\n      }\n    }\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/vendormanagement/SpecialistServiceReferenceEditHelper.gs",
+      "start_line": 42,
+      "end_line": 61,
+      "type": "property_set_declaration",
+      "context": "class_declaration SpecialistServiceReferenceEditHelper"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/web/PatienceContext.gs:5-5",
+    "text": "  function keepWaiting() : boolean",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/web/PatienceContext.gs",
+      "start_line": 5,
+      "end_line": 5,
+      "type": "function_declaration",
+      "context": "interface_declaration PatienceContext"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/validation/PCValidationResultFactory.gs:8-10",
+    "text": "  public function createValidationResult() : PCValidationResult {\n    return new PCValidationResult()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/validation/PCValidationResultFactory.gs",
+      "start_line": 8,
+      "end_line": 10,
+      "type": "function_declaration",
+      "context": "class_declaration PCValidationResultFactory"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchRequest.gs:18-21",
+    "text": "  construct(searchCriteria : SolrPolicySearchCriteria) {\n    super(PCConfigResourceKeys.POLICY_SEARCH_CONFIG.File, {})\n    _searchCriteria = searchCriteria\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchRequest.gs",
+      "start_line": 18,
+      "end_line": 21,
+      "type": "constructor_declaration",
+      "context": "class_declaration SolrPolicySearchRequest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchRequest.gs:23-25",
+    "text": "  override function getDocumentType() : String {\n    return Plugins.get(ISolrSearchPlugin).DocumentType + _store.suffix()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchRequest.gs",
+      "start_line": 23,
+      "end_line": 25,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicySearchRequest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchRequest.gs:31-34",
+    "text": "  override function createSearchCriteria() {\n    addCriterion(SolrPolicySearchCriteria.Type.Name, _searchCriteria)\n    addCriterion(_searchCriteria.NameCriteria)\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchRequest.gs",
+      "start_line": 31,
+      "end_line": 34,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicySearchRequest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchRequest.gs:40-42",
+    "text": "  override function createResultRow() : SolrPolicyResultDocument {\n    return new SolrPolicyResultDocument()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchRequest.gs",
+      "start_line": 40,
+      "end_line": 42,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicySearchRequest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchRequest.gs:44-51",
+    "text": "  override function filterDocument( result : SolrPolicyResultDocument, store : SolrSearchStore ) : boolean {\n    // TODO security or other filtering here\n    // TODO need key marker in result map to indicate which entry(s) correspond to security keys\n    // var claim = Claim.finder.findClaimByClaimNumber(claimNumber)\n    // shouldFilter = claim != null && !perm.Claim.view(claim)\n\n    return super.filterDocument( result, store )\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchRequest.gs",
+      "start_line": 44,
+      "end_line": 51,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicySearchRequest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchCriteria.gs:47-58",
+    "text": "  function performSearch() : List<SolrPolicyResultDocument> {\n    \n    if (!meetsMinimumSearchCriteria()){\n      throw new DisplayableException(DisplayKey.get(\"Web.PolicySearch.Solr.NeedSearchCriteria\")) \n    }\n       \n    var plugin = Plugins.get(ISolrSearchPlugin<SolrPolicySearchCriteria, SolrPolicyResultDocument>)\n    var response = plugin.search(this) \n      \n    return response.Results \n       \n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchCriteria.gs",
+      "start_line": 47,
+      "end_line": 58,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicySearchCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchCriteria.gs:60-69",
+    "text": "  private function meetsMinimumSearchCriteria() : boolean {\n    \n    return PolicyCriteria.NotBlank or\n           NameCriteria.NotBlank or\n           PhoneCriteria.NotBlank or\n           OfficialIdCriteria.NotBlank or\n           StreetCriteria.NotBlank or\n           CityCriteria.NotBlank\n               \n  }  ",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicySearchCriteria.gs",
+      "start_line": 60,
+      "end_line": 69,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicySearchCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyResultDocument.gs:38-70",
+    "text": "  override function toString() : String {\n    var sb = new StringBuilder()\n    sb.append(typeof this)\n    sb.append(\"[\")\n\n    sb.append(\"PolicyNumber=\").append(PolicyNumber).append(\", \")\n    sb.append(\"URN=\").append(URN).append(\", \")\n    sb.append(\"PeriodID=\").append(PeriodID).append(\", \")\n    sb.append(\"PeriodStatus=\").append(PeriodStatus).append(\", \")\n    sb.append(\"JobType=\").append(JobType).append(\", \")\n    sb.append(\"Score=\").append(Score).append(\", \")\n    sb.append(\"Rank=\").append(Rank).append(\", \")\n    sb.append(\"FullName=\").append(FullName).append(\", \")\n    sb.append(\"Company=\").append(Company).append(\", \")\n    sb.append(\"ProductCode=\").append(ProductCode).append(\", \")\n    sb.append(\"Producer=\").append(Producer).append(\", \")\n    sb.append(\"ProducerCodeOfService=\").append(ProducerCodeOfService).append(\", \")\n    sb.append(\"AddressLine1=\").append(AddressLine1).append(\", \")\n    sb.append(\"City=\").append(City).append(\", \")\n    sb.append(\"State=\").append(State).append(\", \")\n    sb.append(\"PostalCode=\").append(PostalCode).append(\", \")\n    sb.append(\"PeriodStart=\").append(PeriodStart).append(\", \")\n    sb.append(\"PeriodEnd=\").append(PeriodEnd).append(\", \")\n    sb.append(\"SliceDate=\").append(SliceDate)\n    sb.append(\"OfficialId=\").append(OfficialId).append(\", \")\n    sb.append(\"ANICompanies=\").append(ANICompanies).append(\", \")\n    sb.append(\"ANIPersons=\").append(ANIPersons).append(\", \")\n    sb.append(\"Phone=\").append(Phones)\n\n    sb.append(\"]\")\n\n    return sb.toString()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyResultDocument.gs",
+      "start_line": 38,
+      "end_line": 70,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicyResultDocument"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyResultDocument.gs:72-74",
+    "text": "  property get PolicyNumberDisplayString(): String {\n    return _policyNumber.NotBlank ? _policyNumber : DisplayKey.get(\"EntityName.PolicyPeriod.PolicyNumber.Unassigned\")\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyResultDocument.gs",
+      "start_line": 72,
+      "end_line": 74,
+      "type": "property_get_declaration",
+      "context": "class_declaration SolrPolicyResultDocument"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyResultDocument.gs:76-78",
+    "text": "  property get PrimaryInsuredName() : String {\n    return Company.HasContent ? Company : FullName\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyResultDocument.gs",
+      "start_line": 76,
+      "end_line": 78,
+      "type": "property_get_declaration",
+      "context": "class_declaration SolrPolicyResultDocument"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyResultDocument.gs:80-82",
+    "text": "  property get PolicyAddress() : String {\n    return AddressLine1 + \"\\n\" + City + \", \" + State + \" \" + PostalCode\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyResultDocument.gs",
+      "start_line": 80,
+      "end_line": 82,
+      "type": "property_get_declaration",
+      "context": "class_declaration SolrPolicyResultDocument"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyResultDocument.gs:84-86",
+    "text": "  property get AdditionalInsureds() : List<String>{\n    return _aniPersons.union(_aniCompanies).order()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyResultDocument.gs",
+      "start_line": 84,
+      "end_line": 86,
+      "type": "property_get_declaration",
+      "context": "class_declaration SolrPolicyResultDocument"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyIndexDocument.gs:12-14",
+    "text": "  construct() {\n    super(PCConfigResourceKeys.POLICY_SEARCH_CONFIG.File)\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyIndexDocument.gs",
+      "start_line": 12,
+      "end_line": 14,
+      "type": "constructor_declaration",
+      "context": "class_declaration SolrPolicyIndexDocument"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyIndexDocument.gs:24-28",
+    "text": "  static function createDocument(period : PolicyPeriod, contact : Contact) : SolrPolicyIndexDocument {\n    var document = new SolrPolicyIndexDocument()\n    document.constructDocument(period, contact, false)\n    return document\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyIndexDocument.gs",
+      "start_line": 24,
+      "end_line": 28,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicyIndexDocument"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyIndexDocument.gs:31-36",
+    "text": "  private function constructDocument(period : PolicyPeriod, pni : Contact, keyOnly : boolean) {\n    addIndexData(period)\n    addIndexData(\"_pniContact\", pni)  // TODO remove this when multiple roots are supported by solr platform\n    addReferencedBean(period.PolicyAddress.Address)\n    populateIndexData(keyOnly) \n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyIndexDocument.gs",
+      "start_line": 31,
+      "end_line": 36,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicyIndexDocument"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyDeleteRequest.gs:14-21",
+    "text": "  override function processContact(contact : Contact, solrContext : SolrIndexContext){\n    var periods = PCSolrUtils.getAllRelatedPolicyPeriods(contact)\n    periods\n      .where(\\ p -> !solrContext.beanIsInBundle(p) and p.Policy.Account == solrContext.Account)\n      .each(\\ p -> {\n        processPeriod(p, solrContext)\n      })\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyDeleteRequest.gs",
+      "start_line": 14,
+      "end_line": 21,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicyDeleteRequest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyDeleteRequest.gs:23-25",
+    "text": "  override function processPeriod(period : PolicyPeriod, solrContext : SolrIndexContext, isPurged : boolean= false){\n    addDeleteQuery(period, solrContext, isPurged) \n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyDeleteRequest.gs",
+      "start_line": 23,
+      "end_line": 25,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicyDeleteRequest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyDeleteRequest.gs:27-49",
+    "text": "  private function addDeleteQuery(period : PolicyPeriod, solrContext : SolrIndexContext, isPurged : boolean){\n    \n    if (solrContext.ProcessedDeletes.contains(period.ID)){\n      _logger.debug(\"Already processed deletion for period: ${period.PublicID} \") \n      return\n    }\n    solrContext.ProcessedDeletes.add(period.ID)\n\n    _logger.debug(\"Adding delete query for : ${period.PublicID} \") \n\n    if(isPurged) {\n      addQuery(\"periodID\", period.PublicID, solrContext)\n    } else if (!period.New){\n      if (period.Preempted or period.Job typeis Submission or period.Job typeis Rewrite\n          or PolicyPeriodStatus.TF_INELIGIBLEFORSOLRINDEX.TypeKeys.contains(period.Status)) {\n        // delete any existing solr document with the same period id\n        addQuery(\"periodID\", period.PublicID, solrContext)\n      } else {\n        // when saving policy changes, renewals or cancellations, delete all solr documents sharing the same policy id\n        addQuery(\"policyPublicID\", period.Policy.PublicID, solrContext)\n      }\n    }    \n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyDeleteRequest.gs",
+      "start_line": 27,
+      "end_line": 49,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicyDeleteRequest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyDeleteRequest.gs:51-59",
+    "text": "  private function addQuery(fieldName : String, fieldValue : String, solrContext : SolrIndexContext){\n    \n    var queryKey = fieldName + \"=\" + fieldValue\n    if (!solrContext.DeleteQueries.contains(queryKey)) { \n      addQuery(fieldName,  \"\\\\\\\"\" + fieldValue + \"\\\\\\\"\") // quote fieldValue, because it contains :  \n      solrContext.DeleteQueries.add(queryKey)  \n    }\n    \n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyDeleteRequest.gs",
+      "start_line": 51,
+      "end_line": 59,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicyDeleteRequest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyDeleteRequest.gs:62-64",
+    "text": "  override function getDocumentType() : String {\n    return Plugins.get(ISolrSearchPlugin).DocumentType + _store.suffix()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/SolrPolicyDeleteRequest.gs",
+      "start_line": 62,
+      "end_line": 64,
+      "type": "function_declaration",
+      "context": "class_declaration SolrPolicyDeleteRequest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs:42-44",
+    "text": "  construct() {\n    super(\"PCSolrSearchPlugin\")\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs",
+      "start_line": 42,
+      "end_line": 44,
+      "type": "constructor_declaration",
+      "context": "class_declaration PCSolrSearchPlugin"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs:46-48",
+    "text": "  static property get Enabled() : boolean {\n    return Plugins.isEnabled(ISolrSearchPlugin<SolrPolicySearchCriteria, SolrPolicyResultDocument>)\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs",
+      "start_line": 46,
+      "end_line": 48,
+      "type": "property_get_declaration",
+      "context": "class_declaration PCSolrSearchPlugin"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs:50-54",
+    "text": "  static function checkEnabled() {\n    if (not Enabled) {\n      throw new DisplayableException(DisplayKey.get(\"SolrSearchPlugin.Error.NotEnabled\"))\n    }\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs",
+      "start_line": 50,
+      "end_line": 54,
+      "type": "function_declaration",
+      "context": "class_declaration PCSolrSearchPlugin"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs:56-85",
+    "text": "  override function search(searchCriteria : SolrPolicySearchCriteria) : SolrResponse<SolrPolicyResultDocument> {\n    checkEnabled()\n    LOGGER.trace(\"PCSolrSearchPlugin.search(SolrPolicySearchCriteria)\")\n    var searchRequest = new SolrPolicySearchRequest(searchCriteria)\n    var solrQuery = constructSearchQuery(searchRequest)\n    if(LOGGER.DebugEnabled) LOGGER.debug(\"Query: \" + solrQuery)\n    var solrServer = PCDependenciesGateway.findSolrClient(searchRequest.getDocumentType())\n    var queryRequest = new QueryRequest(solrQuery, SolrRequest.METHOD.POST) // must use POST!\n    var solrResponse = queryRequest.process(solrServer)\n    SolrSearchMonitor.Instance.incrementTotalSearches()\n    \n    var results : List<SolrPolicyResultDocument>\n    if(solrResponse.Status == 0) {\n      if(LOGGER.DebugEnabled) LOGGER.debug(\"Query response:\" + (solrResponse != null ? \"\\n\" + solrResponse : \"(null)\"))\n      results = searchRequest.processQueryResponse(solrResponse, 0, SolrSearchStore.ACTIVE)\n    } else {\n      SolrSearchMonitor.Instance.incrementTotalSearchErrors()\n      LOGGER.warn(\"Query failed with response code \" + solrResponse.Status + \", content = \" + solrResponse.toString())\n      results = Collections.emptyList<SolrPolicyResultDocument>()\n    }\n/*\n    var periodList = results.where(\\ result -> result.PeriodStatus != PolicyPeriodStatus.TC_BOUND.Code)*.PeriodID\n    var includedList = Query.make(PolicyPeriod).compareIn(\"PublicID\", periodList).select()*.PublicID\n    var excludedList = periodList.subtract(includedList).toSet()\n    var response = new SolrResponse<SolrPolicyResultDocument>(results.where(\\ result ->not excludedList.contains(result.PeriodID)))\n    return response\n */\n    return new SolrResponse<SolrPolicyResultDocument>(results)\n\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs",
+      "start_line": 56,
+      "end_line": 85,
+      "type": "function_declaration",
+      "context": "class_declaration PCSolrSearchPlugin"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs:97-168",
+    "text": "  override function getSolrUniqueKey(period : PolicyPeriod) : String {\n    checkEnabled()\n\n    var indexLogger = gw.api.system.PCLoggerCategory.SOLR_INDEXING\n// This policy is implemented in the digester\n//    if (period.Status != TC_BOUND) {\n//      indexLogger.trace(\"Period is unbound so public ID is used as unique key: ${period.PublicID}\")\n//      return period.PublicID\n//    }\n//\n    var sb = new XformDigest() {:Capture = indexLogger.DebugEnabled}\n\n    var changedContact = PCSolrUtils.getBeanFromBundle(period.PNIContactDenorm, period.Bundle) as Contact\n    \n    var pniContact = period.PNIContactDenorm\n    \n    // PLEASE KEEP THIS IN THE SAME ORDER AS schema.xml to make it easier to keep up-to-date.\n    \n    sb.append(\"urn\", period.Policy.PublicID)             // should be ignored by digester\n    sb.append(\"periodID\", period.PublicID)               // should be ignored by digester\n    sb.append(\"policyPublicID\", period.Policy.PublicID)  // should be ignored by digester\n    sb.append(\"periodStatus\", period.Status.Code)\n    \n    sb.append(\"policyNumber\", period.PolicyNumber)\n    \n    var pni = period.PrimaryNamedInsured\n    if (pni.ContactDenorm typeis Person) {\n      sb.append(\"fullName\", BuildPersonName.mapRoleToFullName(pni))\n    }\n    var personNames = BuildANIPersonName.buildANIPersonNameList(period.PolicyContactRoles).sort()\n    sb.append(\"ANIfullName\", personNames)\n\n    if (pni.ContactDenorm typeis Company) {\n      sb.append(\"companyName\", BuildCompanyName.mapRoleToCompanyName(pni))\n    }\n    var companyNames = BuildANICompanyName.buildANICompanyNameList(period.PolicyContactRoles)\n    sb.append(\"ANIcompanyName\", companyNames)\n\n    sb.append(\"addressLine1\", period.PolicyAddress.AddressLine1)\n    sb.append(\"city\", period.PolicyAddress.City)\n    sb.append(\"state\", period.PolicyAddress.State.Code)\n    sb.append(\"postalCode\", period.PolicyAddress.PostalCode)\n\n    sb.append(\"product\", period.Policy.Product.PublicID)\n    sb.append(\"jurisdiction\", period.BaseState.Code)\n    sb.append(\"producer\", period.ProducerCodeOfRecord.Organization.Name)\n    sb.append(\"producerCodeOfService\", period.Policy.ProducerCodeOfService.Code)\n\n    sb.append(\"phone\", BuildPNIPhones.extractPhones(changedContact?:pniContact))\n    \n    sb.append(\"policyStart\", period.PolicyStartDate.ShortFormat) // should be ignored by digester   TODO: confirm this\n    sb.append(\"policyEnd\", period.PolicyEndDate.ShortFormat)     // should be ignored by digester\n    sb.append(\"periodStart\", period.PeriodStart.ShortFormat)     // should be ignored by digester\n    sb.append(\"periodEnd\", period.PeriodEnd.ShortFormat)         // should be ignored by digester\n    sb.append(\"sliceDate\", period.SliceDate.ShortFormat)         // should be ignored by digester\n\n    // Q: Is pniContact the right thing to use here, or should we use pni.ContactDenorm\n    // so that the SSN and the PNI FullName match?\n    sb.append(\"officialId\", BuildOfficialIds.buildOfficialId(pniContact.OfficialIDs))  \n    sb.append(\"jobType\", BuildTypeOf.mapType(period.Job))        // should be ignored by digester\n    \n    if (sb.Capture) {\n      var digestString = sb.Digest\n      indexLogger.debug(\"getSolrUniqueKey(${period.PublicID}) returned '${digestString}' derived from:\")\n      for (line in sb.DebugString.split(\"\\n\")) {\n        indexLogger.debug(\"    ${line}\")\n      }\n      return digestString\n    } else {\n      return sb.Digest\n    }\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs",
+      "start_line": 97,
+      "end_line": 168,
+      "type": "function_declaration",
+      "context": "class_declaration PCSolrSearchPlugin"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs:88-90",
+    "text": "  override property set Parameters(params : Map<Object,Object>) {\n    super.Parameters = params\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs",
+      "start_line": 88,
+      "end_line": 90,
+      "type": "property_set_declaration",
+      "context": "class_declaration PCSolrSearchPlugin"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs:173-186",
+    "text": "    static function initXformer(): SolrUtil.DigestTransformer {\n      checkEnabled()\n      try {\n        var xml =\n              \"<transformer name=\\\"digestTransformer\\\" class=\\\"com.guidewire.solr.pc.batchload.xform.PCDigestTransformer\\\"\"\n            + \" algorithm=\\\"SHA\\\"\"\n            + \" ignoreElems=\\\"urn, periodID, policyPublicID, sliceDate, periodStart, periodEnd, \"\n            +                        \"policyStart, policyEnd, periodIdWithSliceDate, jobType\\\"/>\";\n        return SolrUtil.makeDigestTransformer(xml)\n      } catch (e : ExceptionInInitializerError) {\n        e.Cause.printStackTrace()\n        throw e\n      }\n    }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs",
+      "start_line": 173,
+      "end_line": 186,
+      "type": "function_declaration",
+      "context": "class_declaration PCSolrSearchPlugin -> class_declaration XformDigest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs:191-193",
+    "text": "    function append(label : String, values : List<String>) {\n      values.each(\\ str -> append(label, str))\n    }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs",
+      "start_line": 191,
+      "end_line": 193,
+      "type": "function_declaration",
+      "context": "class_declaration PCSolrSearchPlugin -> class_declaration XformDigest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs:195-199",
+    "text": "    function append(label : String, str : String) {\n      if (str != null and str.trim().length > 0) {\n        buffer.add(label.toUpperCase() + \"=\" + str)\n      }\n    }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs",
+      "start_line": 195,
+      "end_line": 199,
+      "type": "function_declaration",
+      "context": "class_declaration PCSolrSearchPlugin -> class_declaration XformDigest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs:201-203",
+    "text": "    property get DebugString() : String {\n      return buffer.toString()\n    }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs",
+      "start_line": 201,
+      "end_line": 203,
+      "type": "property_get_declaration",
+      "context": "class_declaration PCSolrSearchPlugin -> class_declaration XformDigest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs:205-207",
+    "text": "    property get Digest() : String {\n      return xformer.createDigest(buffer)\n    }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCSolrSearchPlugin.gs",
+      "start_line": 205,
+      "end_line": 207,
+      "type": "property_get_declaration",
+      "context": "class_declaration PCSolrSearchPlugin -> class_declaration XformDigest"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCDocumentReconstructor.gs:13-31",
+    "text": "  override function reconstructDocument(docObj : JSONObject, updatedBeans : List<KeyableBean>) : JSONObject { \n    var period = updatedBeans.firstWhere( \\ b -> b typeis PolicyPeriod ) as PolicyPeriod \n    var sliceDate = Coercions.makeDateFrom(docObj.get(\"sliceDate\"))\n    period = period.getSlice(sliceDate)\n    var contact = period.PNIContactDenorm\n    \n    if(PLLoggerCategory.SOLR_INDEX.TraceEnabled) {\n      PLLoggerCategory.SOLR_INDEX.trace(\"Reconstructing document for period \" + \n          period?.PublicID + \" and contact \" + contact?.PublicID + \" ( \" + contact?.Name + \" )\")\n    }\n    \n    var result = SolrPolicyIndexDocument.createDocument(period, contact).asJSON() \n    \n    if(PLLoggerCategory.SOLR_INDEX.TraceEnabled) {\n      PLLoggerCategory.SOLR_INDEX.trace(\"RECONSTRUCTED : \" + result.toJSONString())\n    }\n    \n    return result\n  } ",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCDocumentReconstructor.gs",
+      "start_line": 13,
+      "end_line": 31,
+      "type": "function_declaration",
+      "context": "class_declaration PCDocumentReconstructor"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCCacheKeyGenerator.gs:11-17",
+    "text": "  override function createKey( docObj : JSONObject, urnTag : String ) : String {\n    var sb = new StringBuilder(64)\n    sb.append(docObj.get(\"periodID\"))\n    sb.append('&')\n    sb.append(docObj.get(\"sliceDate\"))\n    return sb.toString()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/solr/PCCacheKeyGenerator.gs",
+      "start_line": 11,
+      "end_line": 17,
+      "type": "function_declaration",
+      "context": "class_declaration PCCacheKeyGenerator"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/sharding/AccountTransferManager.gs:20-20",
+    "text": "  function createAccountTransferRepresentation(account: Account) : AccountTransferRepresentation",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/sharding/AccountTransferManager.gs",
+      "start_line": 20,
+      "end_line": 20,
+      "type": "function_declaration",
+      "context": "interface_declaration AccountTransferManager"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/sharding/AccountTransferManager.gs:27-27",
+    "text": "  function importAccounts(accountTransferRepresentation : AccountTransferRepresentation) : Set<Account>",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/sharding/AccountTransferManager.gs",
+      "start_line": 27,
+      "end_line": 27,
+      "type": "function_declaration",
+      "context": "interface_declaration AccountTransferManager"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs:13-15",
+    "text": "  construct(fields : ContactNameFields) {\n    super(fields)\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs",
+      "start_line": 13,
+      "end_line": 15,
+      "type": "constructor_declaration",
+      "context": "class_declaration OrganizationNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs:17-19",
+    "text": "  override property get RequiredFields() : Set<NameOwnerFieldId> {\n    return new HashSet<NameOwnerFieldId>() {NameOwnerFieldId.NP_NAME}.freeze()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs",
+      "start_line": 17,
+      "end_line": 19,
+      "type": "property_get_declaration",
+      "context": "class_declaration OrganizationNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs:21-23",
+    "text": "  override property get HiddenFields() : Set<NameOwnerFieldId> {\n    return new HashSet<NameOwnerFieldId>() {NameOwnerFieldId.PREFIX, NameOwnerFieldId.SUFFIX, NameOwnerFieldId.MIDDLENAME}.freeze()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs",
+      "start_line": 21,
+      "end_line": 23,
+      "type": "property_get_declaration",
+      "context": "class_declaration OrganizationNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs:25-27",
+    "text": "  override property get ContactNamePhoneticLabel() : String {\n    return DisplayKey.get(\"Web.Admin.OrganizationSearch.NamePhonetic\")\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs",
+      "start_line": 25,
+      "end_line": 27,
+      "type": "property_get_declaration",
+      "context": "class_declaration OrganizationNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs:29-31",
+    "text": "  override property get ContactNameLabel() : String {\n    return DisplayKey.get(\"Web.Admin.OrganizationSearch.Name\")\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs",
+      "start_line": 29,
+      "end_line": 31,
+      "type": "property_get_declaration",
+      "context": "class_declaration OrganizationNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs:33-35",
+    "text": "  override property get ShowNameSummary(): boolean {\n    return false\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/OrganizationNameOwner.gs",
+      "start_line": 33,
+      "end_line": 35,
+      "type": "property_get_declaration",
+      "context": "class_declaration OrganizationNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:30-34",
+    "text": "  construct() {\n    FirstNameExact = false\n    LastNameExact = false\n    CompanyNameExact = false\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 30,
+      "end_line": 34,
+      "type": "constructor_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:36-38",
+    "text": "  property get FirstNameExact() : boolean {\n    return _firstNameRestrictor == EqualsIgnoringCase\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 36,
+      "end_line": 38,
+      "type": "property_get_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:44-46",
+    "text": "  property get LastNameExact() : boolean {\n    return _lastNameRestrictor == EqualsIgnoringCase\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 44,
+      "end_line": 46,
+      "type": "property_get_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:52-54",
+    "text": "  property get CompanyNameExact() : boolean {\n    return _companyNameRestrictor == EqualsIgnoringCase\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 52,
+      "end_line": 54,
+      "type": "property_get_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:60-62",
+    "text": "  property get HasPersonNameCriteria() : boolean {\n    return _firstName.NotBlank or _lastName.NotBlank or _firstNameKanji.NotBlank or _lastNameKanji.NotBlank\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 60,
+      "end_line": 62,
+      "type": "property_get_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:64-66",
+    "text": "  property get HasCompanyNameCriteria() : boolean {\n    return _companyName.NotBlank or _companyNameKanji.NotBlank\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 64,
+      "end_line": 66,
+      "type": "property_get_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:68-71",
+    "text": "  property get HasAnyNameCriteria() : boolean {\n    return HasAnyNameCriteriaOtherThanOfficialID\n        or _officialId.NotBlank\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 68,
+      "end_line": 71,
+      "type": "property_get_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:73-80",
+    "text": "  property get HasAnyNameCriteriaOtherThanOfficialID() : boolean {\n    return _firstName.NotBlank\n        or _lastName.NotBlank\n        or _companyName.NotBlank\n        or _firstNameKanji.NotBlank\n        or _lastNameKanji.NotBlank\n        or _companyNameKanji.NotBlank\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 73,
+      "end_line": 80,
+      "type": "property_get_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:40-42",
+    "text": "  property set FirstNameExact(value : boolean) {\n    _firstNameRestrictor = value ? EqualsIgnoringCase : StartsWithIgnoringCase\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 40,
+      "end_line": 42,
+      "type": "property_set_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:48-50",
+    "text": "  property set LastNameExact(value : boolean) {\n    _lastNameRestrictor = value ? EqualsIgnoringCase : StartsWithIgnoringCase\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 48,
+      "end_line": 50,
+      "type": "property_set_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:56-58",
+    "text": "  property set CompanyNameExact(value : boolean) {\n    _companyNameRestrictor = value ? EqualsIgnoringCase : StartsWithIgnoringCase\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 56,
+      "end_line": 58,
+      "type": "property_set_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:82-90",
+    "text": "  function configureFromNameCriteria(builder : ContactQueryBuilder) : ContactQueryBuilder {\n    return builder.withFirstNameRestricted(_firstName, _firstNameRestrictor)\n        .withLastNameRestricted(_lastName, _lastNameRestrictor)\n        .withCompanyNameRestricted(_companyName, _companyNameRestrictor)\n        .withFirstNameKanjiStarting(_firstNameKanji)\n        .withLastNameKanjiStarting(_lastNameKanji)\n        .withCompanyNameKanjiStarting(_companyNameKanji)\n        .withOfficialId(_officialId)\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 82,
+      "end_line": 90,
+      "type": "function_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:92-100",
+    "text": "  function configureFromNameCriteria_ACC(builder : ContactQueryBuilder_ACC) : ContactQueryBuilder_ACC {\n    return builder.withFirstNameRestricted(_firstName, _firstNameRestrictor)\n        .withLastNameRestricted(_lastName, _lastNameRestrictor)\n        .withCompanyNameRestricted(_companyName, _companyNameRestrictor)\n        .withFirstNameKanjiStarting(_firstNameKanji)\n        .withLastNameKanjiStarting(_lastNameKanji)\n        .withCompanyNameKanjiStarting(_companyNameKanji)\n        .withOfficialId(_officialId) as ContactQueryBuilder_ACC\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 92,
+      "end_line": 100,
+      "type": "function_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs:102-109",
+    "text": "  function configureFromNameCriteria(builder : PolicyContactRoleQueryBuilder) : PolicyContactRoleQueryBuilder {\n    return builder.withFirstNameInternalRestricted(_firstName, _firstNameRestrictor)\n        .withLastNameInternalRestricted(_lastName, _lastNameRestrictor)\n        .withCompanyNameInternalRestricted(_companyName, _companyNameRestrictor)\n        .withFirstNameKanjiInternalStarting(_firstNameKanji)\n        .withLastNameKanjiInternalStarting(_lastNameKanji)\n        .withCompanyNameKanjiInternalStarting(_companyNameKanji)\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteriaImpl.gs",
+      "start_line": 102,
+      "end_line": 109,
+      "type": "function_declaration",
+      "context": "class_declaration NameCriteriaImpl"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:14-14",
+    "text": "  property get FirstName() : String",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 14,
+      "end_line": 14,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:17-17",
+    "text": "  property get LastName() : String",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 17,
+      "end_line": 17,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:20-20",
+    "text": "  property get CompanyName() : String",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 20,
+      "end_line": 20,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:23-23",
+    "text": "  property get FirstNameKanji() : String",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 23,
+      "end_line": 23,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:26-26",
+    "text": "  property get LastNameKanji() : String",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 26,
+      "end_line": 26,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:29-29",
+    "text": "  property get CompanyNameKanji() : String",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 29,
+      "end_line": 29,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:32-32",
+    "text": "  property get OfficialId() : String",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 32,
+      "end_line": 32,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:38-38",
+    "text": "  property get FirstNameExact() : boolean",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 38,
+      "end_line": 38,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:47-47",
+    "text": "  property get LastNameExact() : boolean",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 47,
+      "end_line": 47,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:56-56",
+    "text": "  property get CompanyNameExact() : boolean",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 56,
+      "end_line": 56,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:65-65",
+    "text": "  property get HasPersonNameCriteria() : boolean",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 65,
+      "end_line": 65,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:69-69",
+    "text": "  property get HasCompanyNameCriteria() : boolean",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 69,
+      "end_line": 69,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:73-73",
+    "text": "  property get HasAnyNameCriteria() : boolean",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 73,
+      "end_line": 73,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:78-78",
+    "text": "  property get HasAnyNameCriteriaOtherThanOfficialID() : boolean",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 78,
+      "end_line": 78,
+      "type": "property_get_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:15-15",
+    "text": "  property set FirstName(value: String)",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 15,
+      "end_line": 15,
+      "type": "property_set_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:18-18",
+    "text": "  property set LastName(value: String)",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 18,
+      "end_line": 18,
+      "type": "property_set_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:21-21",
+    "text": "  property set CompanyName(value : String)",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 21,
+      "end_line": 21,
+      "type": "property_set_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:24-24",
+    "text": "  property set FirstNameKanji(value: String)",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 24,
+      "end_line": 24,
+      "type": "property_set_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:27-27",
+    "text": "  property set LastNameKanji(value: String)",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 27,
+      "end_line": 27,
+      "type": "property_set_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:30-30",
+    "text": "  property set CompanyNameKanji(value : String)",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 30,
+      "end_line": 30,
+      "type": "property_set_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:33-33",
+    "text": "  property set OfficialId(value : String)",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 33,
+      "end_line": 33,
+      "type": "property_set_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:42-42",
+    "text": "  property set FirstNameExact(value : boolean)",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 42,
+      "end_line": 42,
+      "type": "property_set_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:51-51",
+    "text": "  property set LastNameExact(value : boolean)",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 51,
+      "end_line": 51,
+      "type": "property_set_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:60-60",
+    "text": "  property set CompanyNameExact(value : boolean)",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 60,
+      "end_line": 60,
+      "type": "property_set_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:85-85",
+    "text": "  function configureFromNameCriteria_ACC(builder : ContactQueryBuilder_ACC) : ContactQueryBuilder_ACC",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 85,
+      "end_line": 85,
+      "type": "function_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs:91-91",
+    "text": "  function configureFromNameCriteria(builder : PolicyContactRoleQueryBuilder) : PolicyContactRoleQueryBuilder",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/NameCriteria.gs",
+      "start_line": 91,
+      "end_line": 91,
+      "type": "function_declaration",
+      "context": "interface_declaration NameCriteria"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs:14-16",
+    "text": "  construct(fields : ContactNameFields) {\n    super(fields)\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs",
+      "start_line": 14,
+      "end_line": 16,
+      "type": "constructor_declaration",
+      "context": "class_declaration GroupNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs:18-20",
+    "text": "  override property get RequiredFields() : Set<NameOwnerFieldId> {\n    return new HashSet<NameOwnerFieldId>(){ }.freeze()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs",
+      "start_line": 18,
+      "end_line": 20,
+      "type": "property_get_declaration",
+      "context": "class_declaration GroupNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs:22-24",
+    "text": "  override property get HiddenFields() : Set<NameOwnerFieldId> {\n    return new HashSet<NameOwnerFieldId>() {NameOwnerFieldId.PREFIX, NameOwnerFieldId.SUFFIX, NameOwnerFieldId.MIDDLENAME}.freeze()\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs",
+      "start_line": 22,
+      "end_line": 24,
+      "type": "property_get_declaration",
+      "context": "class_declaration GroupNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs:26-28",
+    "text": "  override property get ContactNamePhoneticLabel() : String {\n    return DisplayKey.get(\"Web.Admin.GroupSearch.NamePhonetic\")\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs",
+      "start_line": 26,
+      "end_line": 28,
+      "type": "property_get_declaration",
+      "context": "class_declaration GroupNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs:30-32",
+    "text": "  override property get ContactNameLabel() : String {\n    return DisplayKey.get(\"Web.Admin.GroupSearch.Name\")\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs",
+      "start_line": 30,
+      "end_line": 32,
+      "type": "property_get_declaration",
+      "context": "class_declaration GroupNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs:34-36",
+    "text": "  override property get ShowNameSummary(): boolean {\n    return false\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/GroupNameOwner.gs",
+      "start_line": 34,
+      "end_line": 36,
+      "type": "property_get_declaration",
+      "context": "class_declaration GroupNameOwner"
+    }
+  },
+  {
+    "id": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/BasicNameOwner.gs:13-15",
+    "text": "  construct(fields : ContactNameFields) {\n    super(fields)\n  }",
+    "metadata": {
+      "source": "/Users/dev/typescript/tree-sitter-gosu/gsrc/gw/search/BasicNameOwner.gs",
+      "start_line": 13,
+      "end_line": 15,
+      "type": "constructor_declaration",
+      "context": "class_declaration BasicNameOwner"
+    }
+  }
+]

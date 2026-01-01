@@ -1,0 +1,20 @@
+{
+    "name": "gosu-rag",
+    "version": "1.0.0",
+    "description": "RAG application for Guidewire Gosu codebase",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "ingest": "ts-node ingest.ts"
+    },
+    "dependencies": {
+        "chromadb": "^1.8.1",
+        "fast-xml-parser": "^5.3.3",
+        "glob": "^10.3.10"
+    },
+    "devDependencies": {
+        "@types/node": "^20.10.6",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.3.3"
+    }
+}

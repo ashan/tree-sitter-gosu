@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="PolicyLinePattern">
+    <xs:complexType>
+      <xs:all>
+        <xs:element name="CoverageCategories" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CoverageCategory" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                      <xs:attribute type="xs:string" name="codeIdentifier"/>
+                      <xs:attribute type="xs:integer" name="priority"/>
+                      <xs:attribute type="xs:string" name="public-id"/>
+                      <xs:attribute type="xs:string" name="refCode" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CoverageSymbolGroupPatterns" minOccurs="0">
+          <xs:complexType>
+          <xs:sequence>
+           <xs:element name="CoverageSymbolGroupPattern" maxOccurs="unbounded" minOccurs="0">
+             <xs:complexType>
+               <xs:sequence>
+                 <xs:element name="CoverageSymbolPatterns" minOccurs="0">
+                 <xs:complexType>
+                   <xs:sequence>
+                     <xs:element name="CoverageSymbolPattern" maxOccurs="unbounded" minOccurs="0">
+                       <xs:complexType>
+                         <xs:attribute type="xs:string" name="codeIdentifier"/>
+                         <xs:attribute type="xs:string" name="coverageSymbolType"/>
+                         <xs:attribute type="xs:string" name="public-id"/>
+                       </xs:complexType>
+                     </xs:element>
+                   </xs:sequence>
+                </xs:complexType>
+                 </xs:element>
+               </xs:sequence>
+               <xs:attribute type="xs:string" name="codeIdentifier"/>
+               <xs:attribute type="xs:integer" name="priority"/>
+               <xs:attribute type="xs:string" name="public-id"/>
+             </xs:complexType>
+           </xs:element>
+          </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element type="xs:string" name="InitializeScript" minOccurs="0"/>
+        <xs:element name="ModifierPatterns" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ModifierPattern" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+                    <xs:element name="RateFactorPatterns" minOccurs="0">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="RateFactorPattern" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:all>
+                                <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+                              </xs:all>
+                              <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                              <xs:attribute type="xs:decimal" name="defaultMaximum" use="optional"/>
+                              <xs:attribute type="xs:decimal" name="defaultMinimum" use="optional"/>
+                              <xs:attribute type="xs:string" name="lookupTableName" use="optional"/>
+                              <xs:attribute type="xs:integer" name="priority" use="optional"/>
+                              <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                              <xs:attribute type="xs:string" name="rateFactorType" use="optional"/>
+                              <xs:attribute type="xs:string" name="refCode" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                  <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                  <xs:attribute type="xs:decimal" name="defaultMaximum" use="optional"/>
+                  <xs:attribute type="xs:decimal" name="defaultMinimum" use="optional"/>
+                  <xs:attribute type="xs:boolean" name="displayEligibility" use="optional"/>
+                  <xs:attribute type="xs:boolean" name="displayJustification" use="optional"/>
+                  <xs:attribute type="xs:boolean" name="displayRange" use="optional"/>
+                  <xs:attribute type="xs:boolean" name="displayValueFinal" use="optional"/>
+                  <xs:attribute type="xs:string" name="lookupTableName" use="optional"/>
+                  <xs:attribute type="xs:string" name="modifierDataType" use="optional"/>
+                  <xs:attribute type="xs:string" name="modifierSubtype" use="optional"/>
+                  <xs:attribute type="xs:integer" name="priority" use="optional"/>
+                  <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                  <xs:attribute type="xs:string" name="refCode" use="optional"/>
+                  <xs:attribute type="xs:string" name="referenceDateByType" use="optional"/>
+                  <xs:attribute type="xs:boolean" name="renderRateAsMultiplier" use="optional"/>                  
+                  <xs:attribute type="xs:boolean" name="scheduleRate" use="optional"/>
+                  <xs:attribute type="xs:boolean" name="splitOnAnniversary" use="optional"/>
+                  <xs:attribute type="xs:string" name="typeList" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="OfficialIdPatterns" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OfficialIdPattern" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute type="xs:string" name="applicableStates"/>
+                  <xs:attribute type="xs:string" name="codeIdentifier"/>
+                  <xs:attribute type="xs:boolean" name="interstate"/>
+                  <xs:attribute type="xs:string" name="officialIDType"/>
+                  <xs:attribute type="xs:string" name="public-id"/>
+                  <xs:attribute type="xs:string" name="scope"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AvailableCoverageCurrencies" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AvailableCoverageCurrency" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute type="xs:string" name="codeIdentifier"/>
+                  <xs:attribute type="xs:string" name="currency"/>
+                  <xs:attribute type="xs:string" name="public-id"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+      <xs:attribute type="xs:string" name="apdManaged" use="optional"/>
+      <xs:attribute type="xs:string" name="codeIdentifier"/>
+      <xs:attribute type="xs:string" name="policyLineSubtype"/>
+      <xs:attribute type="xs:integer" name="priority"/>
+      <xs:attribute type="xs:string" name="public-id"/>
+      <xs:attribute type="xs:string" name="refCode" use="optional"/>
+      <xs:attribute type="xs:boolean" name="territoryCodeNeeded" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

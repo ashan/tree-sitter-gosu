@@ -1,0 +1,17 @@
+==================
+Control Flow
+==================
+
+if (x) { return }
+if (x) return 1 else return 2
+while (true) { x = x + 1 }
+for (i in list) { i }
+
+---
+
+(source_file
+  (if_statement (identifier) (block (return_statement)))
+  (if_statement (identifier) (return_statement (number_literal)) (return_statement (number_literal)))
+  (while_statement (boolean_literal) (block (expression_statement (assignment_expression (identifier) (binary_expression (identifier) (number_literal))))))
+  (for_statement (identifier) (identifier) (block (expression_statement (identifier))))
+)

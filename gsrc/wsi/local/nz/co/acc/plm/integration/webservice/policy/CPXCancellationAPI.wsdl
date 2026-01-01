@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<!-- Generated WSDL for nz.co.acc.plm.integration.webservice.policy.CPXCancellationAPI web service -->
+<wsdl:definitions targetNamespace="http://guidewire.com/pc/ws/nz/co/acc/plm/integration/webservice/policy/CPXCancellationAPI" name="CPXCancellationAPI" xmlns:gwsoap="http://guidewire.com/ws/soapheaders" xmlns:gwwsdl="http://guidewire.com/pl/wsdl" xmlns:pogo="http://guidewire.com/pc/typekey" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://guidewire.com/pc/ws/nz/co/acc/plm/integration/webservice/policy/CPXCancellationAPI" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://guidewire.com/pc/ws/nz/co/acc/plm/integration/webservice/policy/CPXCancellationAPI" elementFormDefault="qualified" xmlns:gw="http://guidewire.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/ws/soapheaders" schemaLocation="../../../../../../../../../gw/xsd/guidewire/soapheaders.xsd"/>
+      <xs:import namespace="http://guidewire.com/pc/typekey"/>
+      <!-- cancelCPX(String, Date, CancellationSource, ReasonCode, String) : String -->
+      <xs:element name="cancelCPX">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="policyNumber" type="xs:string" minOccurs="0"/>
+            <xs:element name="cancellationDate" type="xs:dateTime" minOccurs="0" gw:type="java.util.Date"/>
+            <xs:element name="cancellationSource" type="pogo:CancellationSource" minOccurs="0"/>
+            <xs:element name="reasonCode" type="pogo:ReasonCode" minOccurs="0"/>
+            <xs:element name="transactionId" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cancelCPXResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SOAPException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="RequiredFieldException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="BadIdentifierException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="AlreadyExecutedException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="EntityStateException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="PolicyTermInArchiveSOAPException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="WsiAuthenticationException">
+        <xs:complexType/>
+      </xs:element>
+    </xs:schema>
+    <xs:schema targetNamespace="http://guidewire.com/pc/typekey" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:simpleType name="CancellationSource">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="insured"/>
+          <xs:enumeration value="carrier"/>
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:simpleType name="ReasonCode">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="3yearsnoearnings"/>
+          <xs:enumeration value="AEPMemberManagement_ACC"/>
+          <xs:enumeration value="AEPRateMaster_ACC"/>
+          <xs:enumeration value="BulkCPEarningsChange_ACC"/>
+          <xs:enumeration value="BulkCUChange_ACC"/>
+          <xs:enumeration value="BulkFMUChange_ACC"/>
+          <xs:enumeration value="BulkModifierUpload_ACC"/>
+          <xs:enumeration value="BulkUpdate_ACC"/>
+          <xs:enumeration value="BulkWPCEarningChange_ACC"/>
+          <xs:enumeration value="BulkWPSEarningsChange_ACC"/>
+          <xs:enumeration value="ceased"/>
+          <xs:enumeration value="ceasedirinfo"/>
+          <xs:enumeration value="canceldelinquentcpx_acc"/>
+          <xs:enumeration value="cpxupdateswps_acc"/>
+          <xs:enumeration value="deceased"/>
+          <xs:enumeration value="deceasedirinfo"/>
+          <xs:enumeration value="DeclineNotEligible_ACC"/>
+          <xs:enumeration value="DeclineOther_ACC"/>
+          <xs:enumeration value="DMAEPMemberMgmt_ACC"/>
+          <xs:enumeration value="noc"/>
+          <xs:enumeration value="IR_ACC"/>
+          <xs:enumeration value="IRCUChange_ACC"/>
+          <xs:enumeration value="JoinedAEPGroup_ACC"/>
+          <xs:enumeration value="policyissuedinerror"/>
+          <xs:enumeration value="RemovedFromAEPGroup_ACC"/>
+          <xs:enumeration value="cancel"/>
+          <xs:enumeration value="condemn"/>
+          <xs:enumeration value="cpxfullyear"/>
+          <xs:enumeration value="cpxpartyear"/>
+          <xs:enumeration value="criminal"/>
+          <xs:enumeration value="ProdRequirements"/>
+          <xs:enumeration value="failsafe"/>
+          <xs:enumeration value="failterm"/>
+          <xs:enumeration value="failcoop"/>
+          <xs:enumeration value="fraud"/>
+          <xs:enumeration value="fincononpay"/>
+          <xs:enumeration value="LossHistory"/>
+          <xs:enumeration value="reinsurance"/>
+          <xs:enumeration value="noemployee"/>
+          <xs:enumeration value="noteligibleforcpx"/>
+          <xs:enumeration value="eligibility"/>
+          <xs:enumeration value="nondisclose"/>
+          <xs:enumeration value="nonpayment"/>
+          <xs:enumeration value="nonreport"/>
+          <xs:enumeration value="notpaidcpx"/>
+          <xs:enumeration value="OpsChars"/>
+          <xs:enumeration value="sold"/>
+          <xs:enumeration value="wrapup"/>
+          <xs:enumeration value="PaymentHistory"/>
+          <xs:enumeration value="nottaken"/>
+          <xs:enumeration value="midtermrewrite"/>
+          <xs:enumeration value="flatrewrite"/>
+          <xs:enumeration value="ProductsChars"/>
+          <xs:enumeration value="CovsNotAvailable"/>
+          <xs:enumeration value="InfoNotProvided"/>
+          <xs:enumeration value="riskchange"/>
+          <xs:enumeration value="suspension"/>
+          <xs:enumeration value="uwreasons"/>
+          <xs:enumeration value="unresolvedcontingency"/>
+          <xs:enumeration value="vacant"/>
+          <xs:enumeration value="violation"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:portType name="CPXCancellationAPIPortType">
+    <wsdl:operation name="cancelCPX">
+      <wsdl:input name="cancelCPX" message="tns:cancelCPX"/>
+      <wsdl:output name="cancelCPXResponse" message="tns:cancelCPXResponse"/>
+      <!-- If communication errors occur -->
+      <wsdl:fault name="SOAPException" message="tns:SOAPException"/>
+      <!-- If required field is missing -->
+      <wsdl:fault name="RequiredFieldException" message="tns:RequiredFieldException"/>
+      <!-- If cannot find entity with given identifier -->
+      <wsdl:fault name="BadIdentifierException" message="tns:BadIdentifierException"/>
+      <!-- If the transactionId is duplicated with that of any other previous requests -->
+      <wsdl:fault name="AlreadyExecutedException" message="tns:AlreadyExecutedException"/>
+      <!-- If no policy period with number <code>policyNumber</code> effective on date <code>cancellationDate</code> can be found, if that policy period cannot be canceled for any reason (e.g., the policy is not in force or the cancellation would be an unsupported out-of-sequence change), or if any other error occurs processing the SOAP request. -->
+      <wsdl:fault name="EntityStateException" message="tns:EntityStateException"/>
+      <!-- If the policy term specified is in the archive, it may not be cancelled. If necessary, restore the policy term from the archive in order to continue. -->
+      <wsdl:fault name="PolicyTermInArchiveSOAPException" message="tns:PolicyTermInArchiveSOAPException"/>
+      <wsdl:fault name="WsiAuthenticationException" message="tns:WsiAuthenticationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CPXCancellationAPISoap12Binding" type="tns:CPXCancellationAPIPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="cancelCPX">
+      <soap12:operation soapActionRequired="false" style="document"/>
+      <wsdl:input name="cancelCPX">
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap12:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap12:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelCPXResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SOAPException">
+        <soap12:fault name="SOAPException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="RequiredFieldException">
+        <soap12:fault name="RequiredFieldException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="BadIdentifierException">
+        <soap12:fault name="BadIdentifierException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AlreadyExecutedException">
+        <soap12:fault name="AlreadyExecutedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EntityStateException">
+        <soap12:fault name="EntityStateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PolicyTermInArchiveSOAPException">
+        <soap12:fault name="PolicyTermInArchiveSOAPException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap12:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CPXCancellationAPISoap11Binding" type="tns:CPXCancellationAPIPortType">
+    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="cancelCPX">
+      <soap11:operation style="document"/>
+      <wsdl:input name="cancelCPX">
+        <soap11:body use="literal"/>
+        <soap11:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap11:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap11:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="cancelCPXResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SOAPException">
+        <soap11:fault name="SOAPException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="RequiredFieldException">
+        <soap11:fault name="RequiredFieldException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="BadIdentifierException">
+        <soap11:fault name="BadIdentifierException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="AlreadyExecutedException">
+        <soap11:fault name="AlreadyExecutedException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="EntityStateException">
+        <soap11:fault name="EntityStateException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="PolicyTermInArchiveSOAPException">
+        <soap11:fault name="PolicyTermInArchiveSOAPException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap11:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CPXCancellationAPI">
+    <wsdl:port name="CPXCancellationAPISoap12Port" binding="tns:CPXCancellationAPISoap12Binding">
+      <soap12:address location="local:///nz/co/acc/plm/integration/webservice/policy/CPXCancellationAPI"/>
+    </wsdl:port>
+    <wsdl:port name="CPXCancellationAPISoap11Port" binding="tns:CPXCancellationAPISoap11Binding">
+      <soap11:address location="local:///nz/co/acc/plm/integration/webservice/policy/CPXCancellationAPI/soap11"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:message name="cancelCPX">
+    <wsdl:part name="parameters" element="tns:cancelCPX"/>
+  </wsdl:message>
+  <wsdl:message name="cancelCPXResponse">
+    <wsdl:part name="parameters" element="tns:cancelCPXResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SOAPException">
+    <wsdl:part name="SOAPException" element="tns:SOAPException"/>
+  </wsdl:message>
+  <wsdl:message name="RequiredFieldException">
+    <wsdl:part name="RequiredFieldException" element="tns:RequiredFieldException"/>
+  </wsdl:message>
+  <wsdl:message name="BadIdentifierException">
+    <wsdl:part name="BadIdentifierException" element="tns:BadIdentifierException"/>
+  </wsdl:message>
+  <wsdl:message name="AlreadyExecutedException">
+    <wsdl:part name="AlreadyExecutedException" element="tns:AlreadyExecutedException"/>
+  </wsdl:message>
+  <wsdl:message name="EntityStateException">
+    <wsdl:part name="EntityStateException" element="tns:EntityStateException"/>
+  </wsdl:message>
+  <wsdl:message name="PolicyTermInArchiveSOAPException">
+    <wsdl:part name="PolicyTermInArchiveSOAPException" element="tns:PolicyTermInArchiveSOAPException"/>
+  </wsdl:message>
+  <wsdl:message name="WsiAuthenticationException">
+    <wsdl:part name="WsiAuthenticationException" element="tns:WsiAuthenticationException"/>
+  </wsdl:message>
+  <wsdl:message name="gw-authentication">
+    <wsdl:part name="gw-authentication" element="gwsoap:authentication"/>
+  </wsdl:message>
+  <wsdl:message name="gw-locale-only">
+    <wsdl:part name="gw-locale-only" element="gwsoap:gw_locale"/>
+  </wsdl:message>
+  <wsdl:message name="gw-language-only">
+    <wsdl:part name="gw-language-only" element="gwsoap:gw_language"/>
+  </wsdl:message>
+  <wsdl:message name="gw-transaction-id">
+    <wsdl:part name="gw-transaction-id" element="gwsoap:transaction_id"/>
+  </wsdl:message>
+  <wsdl:message name="gw-traceability-id">
+    <wsdl:part name="gw-traceability-id" element="gwsoap:traceability_id"/>
+  </wsdl:message>
+</wsdl:definitions>

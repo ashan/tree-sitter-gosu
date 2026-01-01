@@ -1,0 +1,27 @@
+==================
+Advanced Expressions
+==================
+
+foo()
+foo(1, "s")
+a.b
+obj.method(x)
+x.y.z
+new Foo()
+new java.util.List(10)
+arr[0]
+list[i + 1]
+
+---
+
+(source_file
+  (expression_statement (call_expression (identifier) (argument_list)))
+  (expression_statement (call_expression (identifier) (argument_list (number_literal) (string_template (string_content)))))
+  (expression_statement (member_access (identifier) (identifier)))
+  (expression_statement (call_expression (member_access (identifier) (identifier)) (argument_list (identifier))))
+  (expression_statement (member_access (member_access (identifier) (identifier)) (identifier)))
+  (expression_statement (new_expression (type_reference (identifier)) (argument_list)))
+  (expression_statement (new_expression (type_reference (identifier) (identifier) (identifier)) (argument_list (number_literal))))
+  (expression_statement (array_access (identifier) (number_literal)))
+  (expression_statement (array_access (identifier) (binary_expression (identifier) (number_literal))))
+)

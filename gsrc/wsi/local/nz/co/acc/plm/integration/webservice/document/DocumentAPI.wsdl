@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+<!-- Generated WSDL for nz.co.acc.plm.integration.webservice.document.DocumentAPI web service -->
+<wsdl:definitions targetNamespace="http://acc.co.nz/pc/ws/nz/co/acc/plm/integration/webservice/document/DocumentAPI" name="DocumentAPI" xmlns:gwsoap="http://guidewire.com/ws/soapheaders" xmlns:gwwsdl="http://guidewire.com/pl/wsdl" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://acc.co.nz/pc/ws/nz/co/acc/plm/integration/webservice/document/DocumentAPI" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://acc.co.nz/pc/ws/nz/co/acc/plm/integration/webservice/document/DocumentAPI" elementFormDefault="qualified" xmlns:imported="http://guidewire.com/pc/gx/nz.co.acc.plm.integration.webservice.gxmodel.documentdatamodel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/ws/soapheaders" schemaLocation="../../../../../../../../../gw/xsd/guidewire/soapheaders.xsd"/>
+      <xs:import namespace="http://guidewire.com/pc/gx/nz.co.acc.plm.integration.webservice.gxmodel.documentdatamodel" schemaLocation="../../../../../../../../../nz/co/acc/plm/integration/webservice/gxmodel/DocumentDataModel.gx"/>
+      <!-- getLevyInvoiceDocuments(String, String, String) : List<DocumentData> -->
+      <xs:element name="getLevyInvoiceDocuments">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="accountNumber" type="xs:string" minOccurs="0"/>
+            <xs:element name="policyNumber" type="xs:string" minOccurs="0"/>
+            <xs:element name="invoiceNumber" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getLevyInvoiceDocumentsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" minOccurs="0" gw:viewas="list" xmlns:gw="http://guidewire.com/xsd">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Entry" type="imported:DocumentData" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SOAPException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="RequiredFieldException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="BadIdentifierException">
+        <xs:complexType/>
+      </xs:element>
+      <xs:element name="WsiAuthenticationException">
+        <xs:complexType/>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:portType name="DocumentAPIPortType">
+    <wsdl:operation name="getLevyInvoiceDocuments">
+      <wsdl:input name="getLevyInvoiceDocuments" message="tns:getLevyInvoiceDocuments"/>
+      <wsdl:output name="getLevyInvoiceDocumentsResponse" message="tns:getLevyInvoiceDocumentsResponse"/>
+      <!-- If communication errors occur -->
+      <wsdl:fault name="SOAPException" message="tns:SOAPException"/>
+      <!-- If required field is missing -->
+      <wsdl:fault name="RequiredFieldException" message="tns:RequiredFieldException"/>
+      <!-- If cannot find entity with given identifier -->
+      <wsdl:fault name="BadIdentifierException" message="tns:BadIdentifierException"/>
+      <wsdl:fault name="WsiAuthenticationException" message="tns:WsiAuthenticationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DocumentAPISoap12Binding" type="tns:DocumentAPIPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getLevyInvoiceDocuments">
+      <soap12:operation soapActionRequired="false" style="document"/>
+      <wsdl:input name="getLevyInvoiceDocuments">
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap12:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap12:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLevyInvoiceDocumentsResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SOAPException">
+        <soap12:fault name="SOAPException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="RequiredFieldException">
+        <soap12:fault name="RequiredFieldException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="BadIdentifierException">
+        <soap12:fault name="BadIdentifierException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap12:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DocumentAPISoap11Binding" type="tns:DocumentAPIPortType">
+    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getLevyInvoiceDocuments">
+      <soap11:operation style="document"/>
+      <wsdl:input name="getLevyInvoiceDocuments">
+        <soap11:body use="literal"/>
+        <soap11:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap11:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap11:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getLevyInvoiceDocumentsResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="SOAPException">
+        <soap11:fault name="SOAPException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="RequiredFieldException">
+        <soap11:fault name="RequiredFieldException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="BadIdentifierException">
+        <soap11:fault name="BadIdentifierException" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap11:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DocumentAPI">
+    <wsdl:port name="DocumentAPISoap12Port" binding="tns:DocumentAPISoap12Binding">
+      <soap12:address location="local:///nz/co/acc/plm/integration/webservice/document/DocumentAPI"/>
+    </wsdl:port>
+    <wsdl:port name="DocumentAPISoap11Port" binding="tns:DocumentAPISoap11Binding">
+      <soap11:address location="local:///nz/co/acc/plm/integration/webservice/document/DocumentAPI/soap11"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:message name="getLevyInvoiceDocuments">
+    <wsdl:part name="parameters" element="tns:getLevyInvoiceDocuments"/>
+  </wsdl:message>
+  <wsdl:message name="getLevyInvoiceDocumentsResponse">
+    <wsdl:part name="parameters" element="tns:getLevyInvoiceDocumentsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="SOAPException">
+    <wsdl:part name="SOAPException" element="tns:SOAPException"/>
+  </wsdl:message>
+  <wsdl:message name="RequiredFieldException">
+    <wsdl:part name="RequiredFieldException" element="tns:RequiredFieldException"/>
+  </wsdl:message>
+  <wsdl:message name="BadIdentifierException">
+    <wsdl:part name="BadIdentifierException" element="tns:BadIdentifierException"/>
+  </wsdl:message>
+  <wsdl:message name="WsiAuthenticationException">
+    <wsdl:part name="WsiAuthenticationException" element="tns:WsiAuthenticationException"/>
+  </wsdl:message>
+  <wsdl:message name="gw-authentication">
+    <wsdl:part name="gw-authentication" element="gwsoap:authentication"/>
+  </wsdl:message>
+  <wsdl:message name="gw-locale-only">
+    <wsdl:part name="gw-locale-only" element="gwsoap:gw_locale"/>
+  </wsdl:message>
+  <wsdl:message name="gw-language-only">
+    <wsdl:part name="gw-language-only" element="gwsoap:gw_language"/>
+  </wsdl:message>
+  <wsdl:message name="gw-transaction-id">
+    <wsdl:part name="gw-transaction-id" element="gwsoap:transaction_id"/>
+  </wsdl:message>
+  <wsdl:message name="gw-traceability-id">
+    <wsdl:part name="gw-traceability-id" element="gwsoap:traceability_id"/>
+  </wsdl:message>
+</wsdl:definitions>

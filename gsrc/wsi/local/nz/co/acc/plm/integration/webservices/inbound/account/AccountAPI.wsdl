@@ -1,0 +1,576 @@
+<?xml version="1.0"?>
+<!-- Generated WSDL for nz.co.acc.plm.integration.webservices.inbound.account.AccountAPI web service -->
+<wsdl:definitions targetNamespace="http://guidewire.com/pc/ws/nz/co/acc/plm/integration/webservices/inbound/account/accountapi" name="AccountAPI" xmlns:gwsoap="http://guidewire.com/ws/soapheaders" xmlns:gwwsdl="http://guidewire.com/pl/wsdl" xmlns:pogo="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountDetail" xmlns:pogo2="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountContact" xmlns:pogo3="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactAddress" xmlns:pogo4="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactPhone" xmlns:pogo5="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactRole" xmlns:pogo6="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountParticipant" xmlns:pogo7="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/PolicyDetail" xmlns:pogo8="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/BICCode" xmlns:pogo9="http://guidewire.com/pc/nz/co/acc/plm/integration/webservices/inbound/AccountSearchResult" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tns="http://guidewire.com/pc/ws/nz/co/acc/plm/integration/webservices/inbound/account/accountapi" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema targetNamespace="http://guidewire.com/pc/ws/nz/co/acc/plm/integration/webservices/inbound/account/accountapi" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/ws/soapheaders" schemaLocation="../../../../../../../../../../gw/xsd/guidewire/soapheaders.xsd"/>
+      <xs:import namespace="http://guidewire.com/pc/nz/co/acc/plm/integration/webservices/inbound/AccountSearchResult"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/BICCode"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/PolicyDetail"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountParticipant"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactRole"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactPhone"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactAddress"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountContact"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountDetail"/>
+      <!-- getAccountDetails(String, String) : AccountDetail -->
+      <xs:element name="getAccountDetails">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="accAccountNumber" type="xs:string" minOccurs="0"/>
+            <xs:element name="legacyEmployerNumber" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAccountDetailsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="pogo:AccountDetail" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="WsiAuthenticationException">
+        <xs:complexType/>
+      </xs:element>
+      <!-- searchAccountByACCID(String) : List<AccountSearchResult> -->
+      <xs:element name="searchAccountByACCID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="accID" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="searchAccountByACCIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" minOccurs="0" gw:viewas="list" xmlns:gw="http://guidewire.com/xsd">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Entry" type="pogo9:AccountSearchResult" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- searchAccountByLegacyEmployerID(String) : List<AccountSearchResult> -->
+      <xs:element name="searchAccountByLegacyEmployerID">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="legacyEmployerID" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="searchAccountByLegacyEmployerIDResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" minOccurs="0" gw:viewas="list" xmlns:gw="http://guidewire.com/xsd">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Entry" type="pogo9:AccountSearchResult" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <!-- searchAccountByAccountName(String) : List<AccountSearchResult> -->
+      <xs:element name="searchAccountByAccountName">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="accAccountName" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="searchAccountByAccountNameResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" minOccurs="0" gw:viewas="list" xmlns:gw="http://guidewire.com/xsd">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Entry" type="pogo9:AccountSearchResult" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema targetNamespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountDetail" elementFormDefault="qualified" xmlns:gw="http://guidewire.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/pc/nz/co/acc/plm/integration/webservices/inbound/AccountSearchResult"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/BICCode"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/PolicyDetail"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountParticipant"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactRole"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactPhone"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactAddress"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountContact"/>
+      <xs:complexType name="AccountDetail">
+        <xs:sequence>
+          <xs:element name="ACCAccountID" type="xs:string" minOccurs="0"/>
+          <xs:element name="AccountName" type="xs:string" minOccurs="0"/>
+          <xs:element name="AccountTypeCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="Contacts" minOccurs="0" gw:viewas="list">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Entry" type="pogo2:AccountContact" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="GWAccountNumber" type="xs:string" minOccurs="0"/>
+          <xs:element name="IRDNumber" type="xs:string" minOccurs="0"/>
+          <xs:element name="LastUpdateDateTime" type="xs:dateTime" minOccurs="0" gw:type="java.util.Date"/>
+          <xs:element name="NZBN" type="xs:string" minOccurs="0"/>
+          <xs:element name="Participants" minOccurs="0" gw:viewas="list">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Entry" type="pogo6:AccountParticipant" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="Policies" minOccurs="0" gw:viewas="list">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Entry" type="pogo7:PolicyDetail" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="TradingName" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountContact" elementFormDefault="qualified" xmlns:gw="http://guidewire.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/pc/nz/co/acc/plm/integration/webservices/inbound/AccountSearchResult"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/BICCode"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/PolicyDetail"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountParticipant"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactRole"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactPhone"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactAddress"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountDetail"/>
+      <xs:complexType name="AccountContact">
+        <xs:sequence>
+          <xs:element name="Addresses" minOccurs="0" gw:viewas="list">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Entry" type="pogo3:ContactAddress" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="CellPhoneNumber" type="pogo4:ContactPhone" minOccurs="0"/>
+          <xs:element name="ContactTypeCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="DateOfBirth" type="xs:dateTime" minOccurs="0" gw:type="java.util.Date"/>
+          <xs:element name="FaxNumber" type="pogo4:ContactPhone" minOccurs="0"/>
+          <xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+          <xs:element name="Gender" type="xs:string" minOccurs="0"/>
+          <xs:element name="HomePhoneNumber" type="pogo4:ContactPhone" minOccurs="0"/>
+          <xs:element name="LastName" type="xs:string" minOccurs="0"/>
+          <xs:element name="MiddleName" type="xs:string" minOccurs="0"/>
+          <xs:element name="Name" type="xs:string" minOccurs="0"/>
+          <xs:element name="PrimaryEmail" type="xs:string" minOccurs="0"/>
+          <xs:element name="PrimaryPhone" type="xs:string" minOccurs="0"/>
+          <xs:element name="Roles" minOccurs="0" gw:viewas="list">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Entry" type="pogo5:ContactRole" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="SecondaryEmail" type="xs:string" minOccurs="0"/>
+          <xs:element name="SubType" type="xs:string" minOccurs="0"/>
+          <xs:element name="Title" type="xs:string" minOccurs="0"/>
+          <xs:element name="WorkPhoneNumber" type="pogo4:ContactPhone" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactAddress" elementFormDefault="qualified" xmlns:gw="http://guidewire.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/pc/nz/co/acc/plm/integration/webservices/inbound/AccountSearchResult"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/BICCode"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/PolicyDetail"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountParticipant"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactRole"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactPhone"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountContact"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountDetail"/>
+      <xs:complexType name="ContactAddress">
+        <xs:sequence>
+          <xs:element name="AddressCity" type="xs:string" minOccurs="0"/>
+          <xs:element name="AddressCountry" type="xs:string" minOccurs="0"/>
+          <xs:element name="AddressLine1" type="xs:string" minOccurs="0"/>
+          <xs:element name="AddressLine2" type="xs:string" minOccurs="0"/>
+          <xs:element name="AddressLine3" type="xs:string" minOccurs="0"/>
+          <xs:element name="AddressPostCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="AddressState" type="xs:string" minOccurs="0"/>
+          <xs:element name="AddressTypeCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="Attention" type="xs:string" minOccurs="0"/>
+          <xs:element name="CPInd" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="PrimaryInd" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="ValidUntil" type="xs:dateTime" minOccurs="0" gw:type="java.util.Date"/>
+          <xs:element name="WPCInd" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="WPSInd" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactPhone" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/pc/nz/co/acc/plm/integration/webservices/inbound/AccountSearchResult"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/BICCode"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/PolicyDetail"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountParticipant"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactRole"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactAddress"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountContact"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountDetail"/>
+      <xs:complexType name="ContactPhone">
+        <xs:sequence>
+          <xs:element name="AreaCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="CountryCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="ExtensionCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="PhoneNumber" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactRole" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/pc/nz/co/acc/plm/integration/webservices/inbound/AccountSearchResult"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/BICCode"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/PolicyDetail"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountParticipant"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactPhone"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactAddress"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountContact"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountDetail"/>
+      <xs:complexType name="ContactRole">
+        <xs:sequence>
+          <xs:element name="DisplayName" type="xs:string" minOccurs="0"/>
+          <xs:element name="RoleType" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountParticipant" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/pc/nz/co/acc/plm/integration/webservices/inbound/AccountSearchResult"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/BICCode"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/PolicyDetail"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactRole"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactPhone"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactAddress"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountContact"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountDetail"/>
+      <xs:complexType name="AccountParticipant">
+        <xs:sequence>
+          <xs:element name="ParticipantCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="ParticipantDesc" type="xs:string" minOccurs="0"/>
+          <xs:element name="ParticipantEmail" type="xs:string" minOccurs="0"/>
+          <xs:element name="ParticipantEmployeeID" type="xs:string" minOccurs="0"/>
+          <xs:element name="ParticipantGroupName" type="xs:string" minOccurs="0"/>
+          <xs:element name="ParticipantMobilePhone" type="xs:string" minOccurs="0"/>
+          <xs:element name="ParticipantRegion" type="xs:string" minOccurs="0"/>
+          <xs:element name="ParticipantUserName" type="xs:string" minOccurs="0"/>
+          <xs:element name="ParticipantWorkPhone" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/PolicyDetail" elementFormDefault="qualified" xmlns:gw="http://guidewire.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/pc/nz/co/acc/plm/integration/webservices/inbound/AccountSearchResult"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/BICCode"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountParticipant"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactRole"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactPhone"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactAddress"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountContact"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountDetail"/>
+      <xs:complexType name="PolicyDetail">
+        <xs:sequence>
+          <xs:element name="ACCAccountID" type="xs:string" minOccurs="0"/>
+          <xs:element name="ACCAccountSuffix" type="xs:string" minOccurs="0"/>
+          <xs:element name="AccreditedEmployerInd" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="AgreedLevelOfCover" type="xs:string" minOccurs="0"/>
+          <xs:element name="ApprovedEmployerInd" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="BICCodes" minOccurs="0" gw:viewas="list">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Entry" type="pogo8:BICCode" minOccurs="0" maxOccurs="unbounded" nillable="true"/>
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="ClaimManagementPeriod" type="xs:string" minOccurs="0"/>
+          <xs:element name="CoverageCodeID" type="xs:string" minOccurs="0"/>
+          <xs:element name="EffectiveDate" type="xs:dateTime" minOccurs="0" gw:type="java.util.Date"/>
+          <xs:element name="EmployerReimbursementInd" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="ExpirationDate" type="xs:dateTime" minOccurs="0" gw:type="java.util.Date"/>
+          <xs:element name="IssueDate" type="xs:dateTime" minOccurs="0" gw:type="java.util.Date"/>
+          <xs:element name="LastUpdateDateTime" type="xs:dateTime" minOccurs="0" gw:type="java.util.Date"/>
+          <xs:element name="LegacyEmployerID" type="xs:string" minOccurs="0"/>
+          <xs:element name="LevyYear" type="xs:int" minOccurs="0"/>
+          <xs:element name="LineCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="LineCodeID" type="xs:string" minOccurs="0"/>
+          <xs:element name="PolicyCeasedInd" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="PolicyNumber" type="xs:string" minOccurs="0"/>
+          <xs:element name="PolicyStatus" type="xs:string" minOccurs="0"/>
+          <xs:element name="ProductCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="ProductCodeID" type="xs:string" minOccurs="0"/>
+          <xs:element name="ValidForClaimRegistrationInd" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/BICCode" elementFormDefault="qualified" xmlns:gw="http://guidewire.com/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/pc/nz/co/acc/plm/integration/webservices/inbound/AccountSearchResult"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/PolicyDetail"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountParticipant"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactRole"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactPhone"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactAddress"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountContact"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountDetail"/>
+      <xs:complexType name="BICCode">
+        <xs:sequence>
+          <xs:element name="BICCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="BICCodeDesc" type="xs:string" minOccurs="0"/>
+          <xs:element name="CUCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="CUCodeDesc" type="xs:string" minOccurs="0"/>
+          <xs:element name="EffectiveDate" type="xs:dateTime" minOccurs="0" gw:type="java.util.Date"/>
+          <xs:element name="ExpirationDate" type="xs:dateTime" minOccurs="0" gw:type="java.util.Date"/>
+          <xs:element name="FMIU" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema targetNamespace="http://guidewire.com/pc/nz/co/acc/plm/integration/webservices/inbound/AccountSearchResult" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/BICCode"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/policy/PolicyDetail"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountParticipant"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactRole"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactPhone"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/ContactAddress"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountContact"/>
+      <xs:import namespace="http://guidewire.com/pc/gsrc/nz/co/acc/plm/integration/webservices/inbound/account/AccountDetail"/>
+      <xs:complexType name="AccountSearchResult">
+        <xs:sequence>
+          <xs:element name="ACCAccountID" type="xs:string" minOccurs="0"/>
+          <xs:element name="ACCAccountSuffix" type="xs:string" minOccurs="0"/>
+          <xs:element name="AccountHolderAddress" type="pogo3:ContactAddress" minOccurs="0"/>
+          <xs:element name="AccountHolderName" type="xs:string" minOccurs="0"/>
+          <xs:element name="AccountHolderPhone" type="xs:string" minOccurs="0"/>
+          <xs:element name="AccountName" type="xs:string" minOccurs="0"/>
+          <xs:element name="AccountTypeCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="ApprovedEmployerInd" type="xs:boolean" minOccurs="0"/>
+          <xs:element name="CoverageCodeID" type="xs:string" minOccurs="0"/>
+          <xs:element name="GWAccountNumber" type="xs:string" minOccurs="0"/>
+          <xs:element name="IRDNumber" type="xs:string" minOccurs="0"/>
+          <xs:element name="LegacyEmployerID" type="xs:string" minOccurs="0"/>
+          <xs:element name="LineCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="LineCodeID" type="xs:string" minOccurs="0"/>
+          <xs:element name="NZBN" type="xs:string" minOccurs="0"/>
+          <xs:element name="PolicyNumber" type="xs:string" minOccurs="0"/>
+          <xs:element name="ProductCode" type="xs:string" minOccurs="0"/>
+          <xs:element name="ProductCodeID" type="xs:string" minOccurs="0"/>
+          <xs:element name="TradingName" type="xs:string" minOccurs="0"/>
+          <xs:element name="ValidForClaimRegistrationInd" type="xs:boolean" minOccurs="0"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:portType name="AccountAPIPortType">
+    <wsdl:operation name="getAccountDetails">
+      <wsdl:input name="getAccountDetails" message="tns:getAccountDetails"/>
+      <wsdl:output name="getAccountDetailsResponse" message="tns:getAccountDetailsResponse"/>
+      <wsdl:fault name="WsiAuthenticationException" message="tns:WsiAuthenticationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccountByACCID">
+      <wsdl:input name="searchAccountByACCID" message="tns:searchAccountByACCID"/>
+      <wsdl:output name="searchAccountByACCIDResponse" message="tns:searchAccountByACCIDResponse"/>
+      <wsdl:fault name="WsiAuthenticationException" message="tns:WsiAuthenticationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccountByLegacyEmployerID">
+      <wsdl:input name="searchAccountByLegacyEmployerID" message="tns:searchAccountByLegacyEmployerID"/>
+      <wsdl:output name="searchAccountByLegacyEmployerIDResponse" message="tns:searchAccountByLegacyEmployerIDResponse"/>
+      <wsdl:fault name="WsiAuthenticationException" message="tns:WsiAuthenticationException"/>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccountByAccountName">
+      <wsdl:input name="searchAccountByAccountName" message="tns:searchAccountByAccountName"/>
+      <wsdl:output name="searchAccountByAccountNameResponse" message="tns:searchAccountByAccountNameResponse"/>
+      <wsdl:fault name="WsiAuthenticationException" message="tns:WsiAuthenticationException"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AccountAPISoap12Binding" type="tns:AccountAPIPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getAccountDetails">
+      <soap12:operation soapActionRequired="false" style="document"/>
+      <wsdl:input name="getAccountDetails">
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap12:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap12:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAccountDetailsResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap12:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccountByACCID">
+      <soap12:operation soapActionRequired="false" style="document"/>
+      <wsdl:input name="searchAccountByACCID">
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap12:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap12:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchAccountByACCIDResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap12:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccountByLegacyEmployerID">
+      <soap12:operation soapActionRequired="false" style="document"/>
+      <wsdl:input name="searchAccountByLegacyEmployerID">
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap12:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap12:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchAccountByLegacyEmployerIDResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap12:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccountByAccountName">
+      <soap12:operation soapActionRequired="false" style="document"/>
+      <wsdl:input name="searchAccountByAccountName">
+        <soap12:body use="literal"/>
+        <soap12:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap12:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap12:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap12:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchAccountByAccountNameResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap12:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="AccountAPISoap11Binding" type="tns:AccountAPIPortType">
+    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getAccountDetails">
+      <soap11:operation style="document"/>
+      <wsdl:input name="getAccountDetails">
+        <soap11:body use="literal"/>
+        <soap11:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap11:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap11:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAccountDetailsResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap11:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccountByACCID">
+      <soap11:operation style="document"/>
+      <wsdl:input name="searchAccountByACCID">
+        <soap11:body use="literal"/>
+        <soap11:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap11:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap11:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchAccountByACCIDResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap11:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccountByLegacyEmployerID">
+      <soap11:operation style="document"/>
+      <wsdl:input name="searchAccountByLegacyEmployerID">
+        <soap11:body use="literal"/>
+        <soap11:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap11:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap11:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchAccountByLegacyEmployerIDResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap11:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccountByAccountName">
+      <soap11:operation style="document"/>
+      <wsdl:input name="searchAccountByAccountName">
+        <soap11:body use="literal"/>
+        <soap11:header message="tns:gw-authentication" part="gw-authentication" use="literal"/>
+        <soap11:header message="tns:gw-language-only" part="gw-language-only" use="literal"/>
+        <soap11:header message="tns:gw-locale-only" part="gw-locale-only" use="literal"/>
+        <soap11:header message="tns:gw-traceability-id" part="gw-traceability-id" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="searchAccountByAccountNameResponse">
+        <soap11:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WsiAuthenticationException">
+        <soap11:fault name="WsiAuthenticationException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AccountAPI">
+    <wsdl:port name="AccountAPISoap12Port" binding="tns:AccountAPISoap12Binding">
+      <soap12:address location="local:///nz/co/acc/plm/integration/webservices/inbound/account/AccountAPI"/>
+    </wsdl:port>
+    <wsdl:port name="AccountAPISoap11Port" binding="tns:AccountAPISoap11Binding">
+      <soap11:address location="local:///nz/co/acc/plm/integration/webservices/inbound/account/AccountAPI/soap11"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:message name="getAccountDetails">
+    <wsdl:part name="parameters" element="tns:getAccountDetails"/>
+  </wsdl:message>
+  <wsdl:message name="getAccountDetailsResponse">
+    <wsdl:part name="parameters" element="tns:getAccountDetailsResponse"/>
+  </wsdl:message>
+  <wsdl:message name="WsiAuthenticationException">
+    <wsdl:part name="WsiAuthenticationException" element="tns:WsiAuthenticationException"/>
+  </wsdl:message>
+  <wsdl:message name="searchAccountByACCID">
+    <wsdl:part name="parameters" element="tns:searchAccountByACCID"/>
+  </wsdl:message>
+  <wsdl:message name="searchAccountByACCIDResponse">
+    <wsdl:part name="parameters" element="tns:searchAccountByACCIDResponse"/>
+  </wsdl:message>
+  <wsdl:message name="searchAccountByLegacyEmployerID">
+    <wsdl:part name="parameters" element="tns:searchAccountByLegacyEmployerID"/>
+  </wsdl:message>
+  <wsdl:message name="searchAccountByLegacyEmployerIDResponse">
+    <wsdl:part name="parameters" element="tns:searchAccountByLegacyEmployerIDResponse"/>
+  </wsdl:message>
+  <wsdl:message name="searchAccountByAccountName">
+    <wsdl:part name="parameters" element="tns:searchAccountByAccountName"/>
+  </wsdl:message>
+  <wsdl:message name="searchAccountByAccountNameResponse">
+    <wsdl:part name="parameters" element="tns:searchAccountByAccountNameResponse"/>
+  </wsdl:message>
+  <wsdl:message name="gw-authentication">
+    <wsdl:part name="gw-authentication" element="gwsoap:authentication"/>
+  </wsdl:message>
+  <wsdl:message name="gw-locale-only">
+    <wsdl:part name="gw-locale-only" element="gwsoap:gw_locale"/>
+  </wsdl:message>
+  <wsdl:message name="gw-language-only">
+    <wsdl:part name="gw-language-only" element="gwsoap:gw_language"/>
+  </wsdl:message>
+  <wsdl:message name="gw-transaction-id">
+    <wsdl:part name="gw-transaction-id" element="gwsoap:transaction_id"/>
+  </wsdl:message>
+  <wsdl:message name="gw-traceability-id">
+    <wsdl:part name="gw-traceability-id" element="gwsoap:traceability_id"/>
+  </wsdl:message>
+</wsdl:definitions>

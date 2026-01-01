@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:element name="Product">
+    <xs:complexType>
+      <xs:all>
+        <xs:element type="xs:string" name="InitializeScript" minOccurs="0"/>
+        <xs:element name="ProductPolicyLinePatterns">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProductPolicyLinePattern" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                  <xs:attribute type="xs:string" name="policyLinePattern" use="optional"/>
+                  <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProductQuestionSetPatterns" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProductQuestionSetPattern" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                      <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                      <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                      <xs:attribute type="xs:string" name="questionSet" use="optional"/>
+               </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DocTemplateRefs" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="DocTemplateRef" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                      <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                      <xs:attribute type="xs:string" name="documentTemplateType" use="optional"/>
+                      <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                      <xs:attribute type="xs:string" name="templateFile" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="AvailablePolicyTerms">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="AvailablePolicyTerm" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                       <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                      <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                      <xs:attribute type="xs:string" name="termType" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ProductModifierPatterns" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ProductModifierPattern" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:all>
+                    <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+                    <xs:element name="ProductRateFactorPatterns" minOccurs="0">
+                      <xs:complexType mixed="true">
+                        <xs:sequence>
+                          <xs:element name="ProductRateFactorPattern" maxOccurs="unbounded" minOccurs="0">
+                            <xs:complexType>
+                              <xs:all>
+                                <xs:element type="xs:string" name="AvailabilityScript" minOccurs="0"/>
+                              </xs:all>
+                              <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                              <xs:attribute type="xs:string" name="defaultMaximum" use="optional"/>
+                              <xs:attribute type="xs:string" name="defaultMinimum" use="optional"/>
+                              <xs:attribute type="xs:string" name="lookupTableName" use="optional"/>
+                              <xs:attribute type="xs:string" name="priority" use="optional"/>
+                              <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                              <xs:attribute type="xs:string" name="rateFactorType" use="optional"/>
+                              <xs:attribute type="xs:string" name="refCode" use="optional"/>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:all>
+                  <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+                  <xs:attribute type="xs:string" name="defaultMaximum" use="optional"/>
+                  <xs:attribute type="xs:string" name="defaultMinimum" use="optional"/>
+                  <xs:attribute type="xs:boolean" name="displayEligibility" use="optional"/>
+                  <xs:attribute type="xs:string" name="displayJustification" use="optional"/>
+                  <xs:attribute type="xs:string" name="displayRange" use="optional"/>
+                  <xs:attribute type="xs:string" name="displayValueFinal" use="optional"/>
+                  <xs:attribute type="xs:string" name="lookupTableName" use="optional"/>
+                  <xs:attribute type="xs:string" name="modifierDataType" use="optional"/>
+                  <xs:attribute type="xs:string" name="modifierSubtype" use="optional"/>
+                  <xs:attribute type="xs:string" name="priority" use="optional"/>
+                  <xs:attribute type="xs:string" name="public-id" use="optional"/>
+                  <xs:attribute type="xs:string" name="refCode" use="optional"/>
+                  <xs:attribute type="xs:boolean" name="renderRateAsMultiplier" use="optional"/>
+                  <xs:attribute type="xs:string" name="scheduleRate" use="optional"/>
+                  <xs:attribute type="xs:string" name="typeList" use="optional"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:all>
+      <xs:attribute type="xs:string" name="abbreviation" use="optional"/>
+      <xs:attribute type="xs:string" name="apdManaged" use="optional"/>
+      <xs:attribute type="xs:string" name="codeIdentifier" use="optional"/>
+      <xs:attribute type="xs:integer" name="daysUntilQuoteNeeded" use="optional"/>
+      <xs:attribute type="xs:string" name="defaultTermType" use="optional"/>
+      <xs:attribute type="xs:string" name="offeringRequired" use="optional"/>
+      <xs:attribute type="xs:integer" name="priority" use="optional"/>
+      <xs:attribute type="xs:string" name="productAccountType" use="optional"/>
+      <xs:attribute type="xs:string" name="productType" use="optional"/>
+      <xs:attribute type="xs:string" name="public-id" use="optional"/>
+      <xs:attribute type="xs:integer" name="quoteRoundingLevel" use="optional"/>
+      <xs:attribute type="xs:string" name="quoteRoundingMode" use="optional"/>
+      <xs:attribute type="xs:string" name="refCode" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

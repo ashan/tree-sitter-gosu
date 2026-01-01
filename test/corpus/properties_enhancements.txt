@@ -1,0 +1,30 @@
+==================
+Properties & Enhancements
+==================
+
+class Person {
+  property get Name() : String {
+    return _name
+  }
+  property set Name(n : String) {
+    _name = n
+  }
+}
+
+enhancement StringEnhancement : String {
+  function printMe() {
+    print(this)
+  }
+}
+
+---
+
+(source_file
+  (class_declaration (identifier) (class_body
+    (property_get_declaration (identifier) (type_reference (identifier)) (block (return_statement (identifier))))
+    (property_set_declaration (identifier) (parameter (identifier) (type_reference (identifier))) (block (expression_statement (assignment_expression (identifier) (identifier)))))
+  ))
+  (enhancement_declaration (identifier) (type_reference (identifier)) (class_body
+    (function_declaration (identifier) (parameter_list) (block (expression_statement (call_expression (identifier) (argument_list (identifier))))))
+  ))
+)

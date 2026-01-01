@@ -1,0 +1,25 @@
+==================
+Final Features
+==================
+
+var x = cond ? 1 : 2
+var y = a ?: b
+var z = 1..10
+var s = "Hello ${name}"
+var safe = obj?.prop
+var field : String as PropName = "val"
+var feat = MyType#MyProp
+var meth = MyType#MyMethod()
+
+---
+
+(source_file
+  (local_variable_declaration (identifier) (ternary_expression (identifier) (number_literal) (number_literal)))
+  (local_variable_declaration (identifier) (elvis_expression (identifier) (identifier)))
+  (local_variable_declaration (identifier) (interval_expression (number_literal) (number_literal)))
+  (local_variable_declaration (identifier) (string_template (string_content) (string_interpolation (identifier))))
+  (local_variable_declaration (identifier) (member_access (identifier) (identifier)))
+  (local_variable_declaration (identifier) (type_reference (identifier)) (identifier) (string_template (string_content)))
+  (local_variable_declaration (identifier) (feature_literal (type_reference (identifier)) (identifier)))
+  (local_variable_declaration (identifier) (feature_literal (type_reference (identifier)) (identifier) (type_list)))
+)

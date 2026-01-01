@@ -1,0 +1,23 @@
+==================
+Literals
+==================
+
+"Double string"
+'Single string'
+123
+123.45
+true
+false
+null
+
+---
+
+(source_file
+  (expression_statement (string_template (string_content)))
+  (expression_statement (string_literal))
+  (expression_statement (number_literal))
+  (expression_statement (number_literal))
+  (expression_statement (boolean_literal))
+  (expression_statement (boolean_literal))
+  (expression_statement (null_literal))
+)

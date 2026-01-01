@@ -1,0 +1,15 @@
+==================
+Simple Function
+==================
+
+function foo() {}
+
+
+public function bar(a: int): String { return "hello" }
+
+---
+
+(source_file
+  (function_declaration (identifier) (parameter_list) (block))
+  (function_declaration (modifiers) (identifier) (parameter_list (parameter (identifier) (primitive_type))) (type_reference (identifier)) (block (return_statement (string_template (string_content)))))
+)

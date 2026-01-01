@@ -1,0 +1,26 @@
+==================
+Collections & Super
+==================
+
+class Foo {
+  construct() {
+    super()
+    super(1, 2)
+  }
+}
+
+var x = { 1, 2, 3 }
+var empty = {}
+
+---
+
+(source_file
+  (class_declaration (identifier) (class_body
+    (constructor_declaration (parameter_list) (block
+      (expression_statement (super_expression (argument_list)))
+      (expression_statement (super_expression (argument_list (number_literal) (number_literal))))
+    ))
+  ))
+  (local_variable_declaration (identifier) (array_initializer (number_literal) (number_literal) (number_literal)))
+  (local_variable_declaration (identifier) (array_initializer))
+)

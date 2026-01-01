@@ -1,0 +1,26 @@
+==================
+Class Members & Casting
+==================
+
+class Foo {
+  private var x : int
+  public static final var Y = 100
+  construct(a: int) {
+    x = a
+  }
+}
+
+var x = y as String
+var z = (a as List).get(0)
+
+---
+
+(source_file
+  (class_declaration (identifier) (class_body
+    (local_variable_declaration (modifiers) (identifier) (primitive_type))
+    (local_variable_declaration (modifiers) (identifier) (number_literal))
+    (constructor_declaration (parameter_list (parameter (identifier) (primitive_type))) (block (expression_statement (assignment_expression (identifier) (identifier)))))
+  ))
+  (local_variable_declaration (identifier) (type_cast_expression (identifier) (type_reference (identifier))))
+  (local_variable_declaration (identifier) (call_expression (member_access (parenthesized_expression (type_cast_expression (identifier) (type_reference (identifier)))) (identifier)) (argument_list (number_literal))))
+)

@@ -1,0 +1,79 @@
+==================
+Enums
+==================
+enum Color {
+  RED,
+  GREEN,
+  BLUE
+}
+enum Status {
+  OPEN,
+  CLOSED;
+
+  var _desc : String
+  construct(s : String) {
+    _desc = s
+  }
+}
+
+---
+
+(source_file
+  (enum_declaration
+    (identifier)
+    (enum_body
+      (enum_constant (identifier))
+      (enum_constant (identifier))
+      (enum_constant (identifier))))
+  (enum_declaration
+    (identifier)
+    (enum_body
+      (enum_constant (identifier))
+      (enum_constant (identifier))
+      (local_variable_declaration
+        (identifier)
+        (type_reference (identifier)))
+      (constructor_declaration
+        (parameter_list 
+            (parameter (identifier) (type_reference (identifier))))
+        (block
+          (expression_statement
+            (assignment_expression
+              (identifier)
+              (identifier))))))))
+
+==================
+Typeis
+==================
+var x = o typeis String
+var y = o typeof String
+
+---
+
+(source_file
+  (local_variable_declaration
+    (identifier)
+    (type_check_expression
+      (identifier)
+      (type_reference (identifier))))
+  (local_variable_declaration
+    (identifier)
+    (type_check_expression
+      (identifier)
+      (type_reference (identifier)))))
+
+==================
+Lambdas Empty
+==================
+var l1 = \ -> print("Empty")
+
+---
+
+(source_file
+  (local_variable_declaration
+    (identifier)
+    (lambda_expression
+      (call_expression
+        (identifier)
+        (argument_list
+          (string_template (string_content)))))))

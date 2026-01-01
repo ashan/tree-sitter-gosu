@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+  <xs:complexType name="Localisation">
+    <xs:sequence>
+      <xs:element name="Language" type="xs:string"/>
+      <xs:element name="Owner">
+        <xs:complexType>
+          <xs:attribute name="public-id" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Value" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="Edition">
+    <xs:sequence>
+      <xs:element name="EditionCode" type="xs:string"/>
+      <xs:element name="EffectiveDate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Rule">
+    <xs:sequence>
+      <xs:element name="DefaultBitValue" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="DefaultCodeValue" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Code" type="xs:string" minOccurs="0"/>
+            <xs:element name="Name" type="xs:string" minOccurs="0"/>
+          </xs:sequence>
+          <xs:attribute name="public-id" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DefaultDateValue" type="xs:dateTime" minOccurs="0"/>
+      <xs:element name="DefaultDecimalValue" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="DefaultExistence" type="xs:string" minOccurs="0"/>
+      <xs:element name="DefaultIntegerValue" type="xs:int" minOccurs="0"/>
+      <xs:element name="DefaultStringValue" type="xs:string" minOccurs="0"/>
+      <xs:element name="DefaultTagValue" type="xs:string" minOccurs="0"/>
+      <xs:element name="DefaultCalculatedValue" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Function" type="xs:string"/>
+            <xs:element name="Arguments">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Argument" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:attribute name="public-id" type="xs:string"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Edition" type="xs:string" minOccurs="0"/>
+      <xs:element name="JsonLogicExpression" type="xs:string" minOccurs="0"/>
+      <xs:element name="RuleElements">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDRuleElement" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="DefaultBitValue" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="DefaultCodeValue" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                        <xs:element name="Name" type="xs:string" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attribute name="public-id" type="xs:string"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="DefaultDateValue" type="xs:dateTime" minOccurs="0"/>
+                  <xs:element name="DefaultDecimalValue" type="xs:decimal" minOccurs="0"/>
+                  <xs:element name="DefaultIntegerValue" type="xs:int" minOccurs="0"/>
+                  <xs:element name="DefaultStringValue" type="xs:string" minOccurs="0"/>
+                  <xs:element name="DefaultTagValue" type="xs:string" minOccurs="0"/>
+                  <xs:element name="Existence" type="xs:string" minOccurs="0"/>
+                  <xs:element name="Rule">
+                    <xs:complexType>
+                      <xs:attribute name="public-id" type="xs:string"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="RuleConditions">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="APDRuleCondition" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="Attribute" minOccurs="0">
+                                <xs:complexType>
+                                  <xs:attribute name="public-id" type="xs:string"/>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="Clause" minOccurs="0">
+                                <xs:complexType>
+                                  <xs:attribute name="public-id" type="xs:string"/>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="ConditionValue" type="xs:string" minOccurs="0"/>
+                              <xs:element name="BitValue" type="xs:boolean" minOccurs="0"/>
+                              <xs:element name="CodeValue">
+                                <xs:complexType>
+                                  <xs:sequence>
+                                    <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                                    <xs:element name="Name" type="xs:string" minOccurs="0"/>
+                                  </xs:sequence>
+                                  <xs:attribute name="public-id" type="xs:string"/>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="Jurisdiction" type="xs:string" minOccurs="0"/>
+                              <xs:element name="Operator" type="xs:string" minOccurs="0"/>
+                              <xs:element name="RuleElement">
+                                <xs:complexType>
+                                  <xs:attribute name="public-id" type="xs:string"/>
+                                </xs:complexType>
+                              </xs:element>
+                            </xs:sequence>
+                            <xs:attribute name="public-id" type="xs:string"/>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Sequence" type="xs:int" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="public-id" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RuleType" type="xs:string" minOccurs="0"/>
+      <xs:element name="TagType" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="public-id" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="Attribute">
+    <xs:sequence>
+      <xs:element name="Category" type="xs:string" minOccurs="0"/>
+      <xs:element name="Codes">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDDropDownEntry" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Attribute">
+                    <xs:complexType>
+                      <xs:attribute name="public-id" type="xs:string"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                  <xs:element name="Currency" type="xs:string" minOccurs="0"/>
+                  <xs:element name="Description" type="xs:string" minOccurs="0"/>
+                  <xs:element name="Description_L10N_ARRAY">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="APDDropdownEntry_Description_L10N" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:complexContent>
+                              <xs:extension base="Localisation">
+                                <xs:attribute name="public-id" type="xs:string"/>
+                              </xs:extension>
+                            </xs:complexContent>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Name" type="xs:string"/>
+                  <xs:element name="Name_L10N_ARRAY">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="APDDropdownEntry_Name_L10N" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:complexContent>
+                              <xs:extension base="Localisation">
+                                <xs:attribute name="public-id" type="xs:string"/>
+                              </xs:extension>
+                            </xs:complexContent>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Sequence" type="xs:int" minOccurs="0"/>
+                  <xs:element name="Values" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="APDDropdownValue" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:sequence>
+                              <xs:element name="DecimalValue" type="xs:decimal" minOccurs="0"/>
+                              <xs:element name="Dropdown">
+                                <xs:complexType>
+                                  <xs:attribute name="public-id" type="xs:string"/>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="DropdownColumn">
+                                <xs:complexType>
+                                  <xs:attribute name="public-id" type="xs:string"/>
+                                </xs:complexType>
+                              </xs:element>
+                              <xs:element name="IntegerValue" type="xs:int" minOccurs="0"/>
+                            </xs:sequence>
+                            <xs:attribute name="public-id" type="xs:string"/>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+                <xs:attribute name="public-id" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="Description_L10N_ARRAY">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDAttribute_Description_L10N" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Localisation">
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DoNotRegenerate" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="DropDownType" type="xs:string" minOccurs="0"/>
+      <xs:element name="IsDropDownOwner" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="Jurisdiction" type="xs:boolean"/>
+      <xs:element name="Label" type="xs:string"/>
+      <xs:element name="Label_L10N_ARRAY">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDAttribute_Label_L10N" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Localisation">
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Name" type="xs:string" minOccurs="0"/>
+      <xs:element name="OwningDropDown" minOccurs="0">
+        <xs:complexType>
+          <xs:attribute name="public-id" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Rules" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDAttributeRule" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Rule">
+                    <xs:sequence>
+                      <xs:element name="Attribute">
+                        <xs:complexType>
+                          <xs:attribute name="public-id" type="xs:string"/>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="APDDropDownEntryRule" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Rule">
+                    <xs:sequence>
+                      <xs:element name="Attribute">
+                        <xs:complexType>
+                          <xs:attribute name="public-id" type="xs:string"/>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="DropDownEntry">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="Code" type="xs:string" minOccurs="0"/>
+                            <xs:element name="Name" type="xs:string" minOccurs="0"/>
+                          </xs:sequence>
+                          <xs:attribute name="public-id" type="xs:string"/>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Scalable" type="xs:boolean" minOccurs="0" default="false"/>
+      <xs:element name="Sequence" type="xs:int"/>
+      <xs:element name="SplitByRatingPeriods" type="xs:boolean" minOccurs="0" default="false"/>
+      <xs:element name="GenerateAsClauseTerm" type="xs:boolean" minOccurs="0" default="false"/>
+      <xs:element name="Type" type="xs:string"/>
+      <xs:element name="Typelist" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CostDefinition">
+    <xs:sequence>
+      <xs:element name="Basis">
+        <xs:complexType>
+          <xs:attribute name="public-id" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CostCode">
+        <xs:complexType>
+          <xs:attribute name="public-id" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CostCodeFilters">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDCostCodeFilter" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CostCode">
+                    <xs:complexType>
+                      <xs:attribute name="public-id" type="xs:string"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="CostDefinition">
+                    <xs:complexType>
+                      <xs:attribute name="public-id" type="xs:string"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+                <xs:attribute name="public-id" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CostingByExposure" type="xs:boolean" minOccurs="0"/>
+      <xs:element name="CostSteps">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDCostStepDefinition" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CostDefinition">
+                    <xs:complexType>
+                      <xs:attribute name="public-id" type="xs:string"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Description" type="xs:string"/>
+                  <xs:element name="PrimaryFactor" minOccurs="0">
+                    <xs:complexType>
+                      <xs:attribute name="public-id" type="xs:string"/>
+                    </xs:complexType>
+                  </xs:element>
+                </xs:sequence>
+                <xs:attribute name="public-id" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CumulativeCostBasis" type="xs:boolean"/>
+      <xs:element name="JurisdictionFilter" type="xs:string" minOccurs="0"/>
+      <xs:element name="PricingOrder" type="xs:int"/>
+      <xs:element name="RateAmountTypeFilter" type="xs:string" minOccurs="0"/>
+      <xs:element name="RatingScale" type="xs:string"/>
+      <xs:element name="SeparateBilling" type="xs:boolean"/>
+      <xs:element name="SeparateCollection" type="xs:boolean"/>
+      <xs:element name="TypeName" type="xs:string" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Clause">
+    <xs:sequence>
+      <xs:element name="ClauseCategory">
+        <xs:complexType>
+          <xs:attribute name="public-id" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CodeIdentifier" type="xs:string" minOccurs="0"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="Description_L10N_ARRAY">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDClause_Description_L10N" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Localisation">
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Name_L10N_ARRAY">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDClause_Name_L10N" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Localisation">
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ParentClause" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:attribute name="public-id" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Rules" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDClauseRule" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Rule">
+                    <xs:sequence>
+                      <xs:element name="Clause">
+                        <xs:complexType>
+                          <xs:attribute name="public-id" type="xs:string"/>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ScheduledItem" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:complexContent>
+            <xs:extension base="Coverable">
+              <xs:attribute name="public-id" type="xs:string"/>
+            </xs:extension>
+          </xs:complexContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Sequence" type="xs:int"/>
+      <xs:element name="Terms">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDTerm" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Attribute">
+                    <xs:sequence>
+                      <xs:element name="Clause">
+                        <xs:complexType>
+                          <xs:attribute name="public-id" type="xs:string"/>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name ="DropdownColumns" minOccurs="0">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="APDDropdownColumn" minOccurs="0" maxOccurs="unbounded">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="Term">
+                                    <xs:complexType>
+                                      <xs:attribute name="public-id" type="xs:string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Name" type="xs:string" minOccurs="0"/>
+                                  <xs:element name="Name_L10N_ARRAY">
+                                    <xs:complexType>
+                                      <xs:sequence>
+                                        <xs:element name="APDDropdownColumn_Name_L10N" minOccurs="0" maxOccurs="unbounded">
+                                          <xs:complexType>
+                                            <xs:complexContent>
+                                              <xs:extension base="Localisation">
+                                                <xs:attribute name="public-id" type="xs:string"/>
+                                              </xs:extension>
+                                            </xs:complexContent>
+                                          </xs:complexType>
+                                        </xs:element>
+                                      </xs:sequence>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Sequence" type="xs:int"/>
+                                  <xs:element name="ValueType" type="xs:string" minOccurs="0"/>
+                                </xs:sequence>
+                                <xs:attribute name="public-id" type="xs:string"/>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="ScheduleItemAttribute" type="xs:boolean"/>
+                    </xs:sequence>
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Coverable">
+    <xs:sequence>
+      <xs:element name="ChildrenLabel" type="xs:string" minOccurs="0"/>
+      <xs:element name="ChildrenLabel_L10N_ARRAY" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDCoverable_ChildrenLabel_L10N" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Localisation">
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ClauseCategories">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDClauseCategory" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CodeIdentifier" type="xs:string" minOccurs="0"/>
+                  <xs:element name="Coverable">
+                    <xs:complexType>
+                      <xs:attribute name="public-id" type="xs:string"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Description" type="xs:string" minOccurs="0"/>
+                  <xs:element name="Description_L10N_ARRAY" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="APDClauseCategory_Description_L10N" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:complexContent>
+                              <xs:extension base="Localisation">
+                                <xs:attribute name="public-id" type="xs:string"/>
+                              </xs:extension>
+                            </xs:complexContent>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Hidden" type="xs:boolean"/>
+                  <xs:element name="Itemised" type="xs:boolean"/>
+                  <xs:element name="Name" type="xs:string"/>
+                  <xs:element name="Name_L10N_ARRAY" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="APDClauseCategory_Name_L10N" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:complexContent>
+                              <xs:extension base="Localisation">
+                                <xs:attribute name="public-id" type="xs:string"/>
+                              </xs:extension>
+                            </xs:complexContent>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Sequence" type="xs:int"/>
+                </xs:sequence>
+                <xs:attribute name="public-id" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Clauses">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDCoverage" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Clause">
+                    <xs:sequence>
+                      <xs:element name="ClaimCategories">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="APDCoverageClaim" minOccurs="0" maxOccurs="unbounded">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="ClaimCostCategory">
+                                    <xs:complexType>
+                                      <xs:attribute name="public-id" type="xs:string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Coverage">
+                                    <xs:complexType>
+                                      <xs:attribute name="public-id" type="xs:string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="public-id" type="xs:string"/>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="CostDefinitions">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="APDCoverageCostDefinition" minOccurs="0" maxOccurs="unbounded">
+                              <xs:complexType>
+                                <xs:complexContent>
+                                  <xs:extension base="CostDefinition">
+                                    <xs:sequence>
+                                      <xs:element name="Coverage">
+                                        <xs:complexType>
+                                          <xs:attribute name="public-id" type="xs:string"/>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="public-id" type="xs:string"/>
+                                  </xs:extension>
+                                </xs:complexContent>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Coverable">
+                        <xs:complexType>
+                          <xs:attribute name="public-id" type="xs:string"/>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Perils">
+                        <xs:complexType>
+                          <xs:sequence>
+                            <xs:element name="APDCoveragePeril" minOccurs="0" maxOccurs="unbounded">
+                              <xs:complexType>
+                                <xs:sequence>
+                                  <xs:element name="Coverage">
+                                    <xs:complexType>
+                                      <xs:attribute name="public-id" type="xs:string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Deductible" type="xs:decimal" minOccurs="0"/>
+                                  <xs:element name="DeductibleAttribute">
+                                    <xs:complexType>
+                                      <xs:attribute name="public-id" type="xs:string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="ExistanceAttribute" minOccurs="0">
+                                    <xs:complexType>
+                                      <xs:attribute name="public-id" type="xs:string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="ExistanceBit" type="xs:boolean" minOccurs="0"/>
+                                  <xs:element name="ExistanceCode" type="xs:string" minOccurs="0"/>
+                                  <xs:element name="ExistanceDecimal" type="xs:decimal" minOccurs="0"/>
+                                  <xs:element name="ExistanceInteger" type="xs:int" minOccurs="0"/>
+                                  <xs:element name="IncludeExcludeExistance" type="xs:boolean" minOccurs="0"/>
+                                  <xs:element name="LimitAttribute">
+                                    <xs:complexType>
+                                      <xs:attribute name="public-id" type="xs:string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="OverrideDeductible" minOccurs="0">
+                                    <xs:complexType>
+                                      <xs:attribute name="public-id" type="xs:string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="OverrideLimit" minOccurs="0">
+                                    <xs:complexType>
+                                      <xs:attribute name="public-id" type="xs:string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="Peril">
+                                    <xs:complexType>
+                                      <xs:attribute name="public-id" type="xs:string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="PerilLimit" type="xs:decimal" minOccurs="0"/>
+                                </xs:sequence>
+                                <xs:attribute name="public-id" type="xs:string"/>
+                              </xs:complexType>
+                            </xs:element>
+                          </xs:sequence>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="PricingOrder" type="xs:int"/>
+                      <xs:element name="SeparateBilling" type="xs:boolean" default="false"/>
+                      <xs:element name="SeparateCollection" type="xs:boolean" default="false"/>
+                      <xs:element name="WrittenByThirdParty" type="xs:boolean" default="false"/>
+                    </xs:sequence>
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="APDCondition" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Clause">
+                    <xs:sequence>
+                      <xs:element name="Coverable">
+                        <xs:complexType>
+                          <xs:attribute name="public-id" type="xs:string"/>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="APDExclusion" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Clause">
+                    <xs:sequence>
+                      <xs:element name="Coverable">
+                        <xs:complexType>
+                          <xs:attribute name="public-id" type="xs:string"/>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CoreFields" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDCoreAttribute" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Attribute">
+                    <xs:sequence>
+                      <xs:element name="Coverable">
+                        <xs:complexType>
+                          <xs:attribute name="public-id" type="xs:string"/>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="FieldType" type="xs:string"/>
+                    </xs:sequence>
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CostDefinitions">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDRiskCostDefinition" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="CostDefinition">
+                    <xs:sequence>
+                      <xs:element name="Coverable">
+                        <xs:complexType>
+                          <xs:attribute name="public-id" type="xs:string"/>
+                        </xs:complexType>
+                      </xs:element>
+                    </xs:sequence>
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CoverableType" type="xs:string"/>
+      <xs:element name="Description" type="xs:string" minOccurs="0"/>
+      <xs:element name="Description_L10N_ARRAY" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDCoverable_Description_L10N" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Localisation">
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ExposureLabel" type="xs:string" minOccurs="0"/>
+      <xs:element name="ExposureLabel_L10N_ARRAY" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDCoverable_ExposureLabel_L10N" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Localisation">
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Exposures">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDExposure" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="ContactRole" type="xs:string" minOccurs="0"/>
+                  <xs:element name="Coverable">
+                    <xs:complexType>
+                      <xs:attribute name="public-id" type="xs:string"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Description" type="xs:string" minOccurs="0"/>
+                  <xs:element name="Description_L10N_ARRAY" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="APDExposure_Description_L10N" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:complexContent>
+                              <xs:extension base="Localisation">
+                                <xs:attribute name="public-id" type="xs:string"/>
+                              </xs:extension>
+                            </xs:complexContent>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="ExposureType" type="xs:string"/>
+                  <xs:element name="Fields">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="APDExposureField" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:complexContent>
+                              <xs:extension base="Attribute">
+                                <xs:sequence>
+                                  <xs:element name="Exposure">
+                                    <xs:complexType>
+                                      <xs:attribute name="public-id" type="xs:string"/>
+                                    </xs:complexType>
+                                  </xs:element>
+                                  <xs:element name="ExposureParty" type="xs:boolean"/>
+                                  <xs:element name="BasisScalingKey" type="xs:boolean" default="false" minOccurs="0"/>
+                                </xs:sequence>
+                                <xs:attribute name="public-id" type="xs:string"/>
+                              </xs:extension>
+                            </xs:complexContent>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="IsAutoNumbered" type="xs:boolean" default="false" minOccurs="0"/>
+                  <xs:element name="MenuLabel" type="xs:string" minOccurs="0"/>
+                  <xs:element name="MenuLabel_L10N_ARRAY" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="APDExposure_MenuLabel_L10N" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:complexContent>
+                              <xs:extension base="Localisation">
+                                <xs:attribute name="public-id" type="xs:string"/>
+                              </xs:extension>
+                            </xs:complexContent>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="Name" type="xs:string"/>
+                  <xs:element name="Name_L10N_ARRAY" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="APDExposure_Name_L10N" minOccurs="0" maxOccurs="unbounded">
+                          <xs:complexType>
+                            <xs:complexContent>
+                              <xs:extension base="Localisation">
+                                <xs:attribute name="public-id" type="xs:string"/>
+                              </xs:extension>
+                            </xs:complexContent>
+                          </xs:complexType>
+                        </xs:element>
+                      </xs:sequence>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="RatingType" type="xs:string"/>
+                  <xs:element name="RiskLocation" type="xs:string"/>
+                  <xs:element name="TypeName" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="public-id" type="xs:string"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Fields">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDField" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Attribute">
+                    <xs:sequence>
+                      <xs:element name="Coverable">
+                        <xs:complexType>
+                          <xs:attribute name="public-id" type="xs:string"/>
+                        </xs:complexType>
+                      </xs:element>
+                      <xs:element name="Identifier" type="xs:boolean" default="false"/>
+                    </xs:sequence>
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="HasChildren" type="xs:boolean" default="false" minOccurs="0"/>
+      <xs:element name="HasExposure" type="xs:boolean" default="false" minOccurs="0"/>
+      <xs:element name="HasModifiers" type="xs:boolean" default="false" minOccurs="0"/>
+      <xs:element name="IsAutoNumbered" type="xs:boolean" default="true" minOccurs="0"/>
+      <xs:element name="MenuLabel" type="xs:string" minOccurs="0"/>
+      <xs:element name="MenuLabel_L10N_ARRAY" minOccurs="0">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDCoverable_MenuLabel_L10N" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Localisation">
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Name" type="xs:string"/>
+      <xs:element name="Name_L10N_ARRAY">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="APDCoverable_Name_L10N" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:complexContent>
+                  <xs:extension base="Localisation">
+                    <xs:attribute name="public-id" type="xs:string"/>
+                  </xs:extension>
+                </xs:complexContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Parent"  minOccurs="0">
+        <xs:complexType>
+          <xs:attribute name="public-id" type="xs:string"/>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RiskLocation" type="xs:string"/>
+      <xs:element name="SeparateBilling" type="xs:boolean" default="false" minOccurs="0"/>
+      <xs:element name="SeparateCollection" type="xs:boolean" default="false" minOccurs="0"/>
+      <xs:element name="TypeName" type="xs:string" minOccurs="0"/>
+      <xs:element name="WrittenByThirdParty" type="xs:boolean" default="false" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="import">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="APDProduct">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Abbreviation" type="xs:string"/>
+              <xs:element name="CodeIdentifier" type="xs:string"/>
+              <xs:element name="Coinsurance" type="xs:boolean" default="false"/>
+              <xs:element name="Currencies" type="xs:string" default="domestic"/>
+              <xs:element name="DateInstalled" type="xs:dateTime" minOccurs="0"/>
+              <xs:element name="DateUpdated" type="xs:dateTime" minOccurs="0"/>
+              <xs:element name="DefinitionSequence" type="xs:int"/>
+              <xs:element name="Description" type="xs:string" minOccurs="0"/>
+              <xs:element name="Description_L10N_ARRAY" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="APDProduct_Description_L10N" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="Localisation">
+                            <xs:attribute name="public-id" type="xs:string"/>
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Multiline" type="xs:boolean" default="false"/>
+              <xs:element name="Name" type="xs:string"/>
+              <xs:element name="Name_L10N_ARRAY" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="APDProduct_Name_L10N" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:complexContent>
+                          <xs:extension base="Localisation">
+                            <xs:attribute name="public-id" type="xs:string"/>
+                          </xs:extension>
+                        </xs:complexContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ProductAccountType" type="xs:string" default="Any" minOccurs="0"/>
+              <xs:element name="ProductCode" type="xs:string" minOccurs="0"/>
+              <xs:element name="UsesLocationListView" type="xs:boolean" default="false"/>
+              <xs:element name="WrittenByThirdParty" type="xs:boolean" default="false"/>
+            </xs:sequence>
+            <xs:attribute name="public-id" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="APDProductLine" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="Coverable">
+                <xs:sequence>
+                  <xs:element name="CodeIdentifier" type="xs:string"/>
+                  <xs:element name="Currencies" type="xs:string" default="domestic" minOccurs="0"/>
+                  <xs:element name="DefinitionSequence" type="xs:int"/>
+                  <xs:element name="Edition" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                      <xs:complexContent>
+                        <xs:extension base="Edition">
+                        </xs:extension>
+                      </xs:complexContent>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="LinePrefix" type="xs:string"/>
+                  <xs:element name="ProductLineCode" type="xs:string" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="public-id" type="xs:string"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="APDProductToLine" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Product">
+                <xs:complexType>
+                  <xs:attribute name="public-id" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="ProductLine">
+                <xs:complexType>
+                  <xs:attribute name="public-id" type="xs:string"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="public-id" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="APDCoverable" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:complexContent>
+              <xs:extension base="Coverable">
+                <xs:attribute name="public-id" type="xs:string"/>
+              </xs:extension>
+            </xs:complexContent>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string"/>
+      <xs:attribute name="usePeriodicFlushes" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
