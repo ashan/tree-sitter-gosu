@@ -1,2 +1,0 @@
-@Target(METHOD)
-annotation MyAnnotation {}

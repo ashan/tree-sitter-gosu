@@ -2,8 +2,6 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as child_process from 'child_process';
 
-const GSRC_DIR = path.resolve(__dirname, '../gsrc');
-
 interface ErrorDetail {
     type: string;
     position: string; // "[row:col]-[row:col]" (1-based)
@@ -153,7 +151,7 @@ function extractErrors(file: string, xml: string): ErrorDetail[] {
     return found;
 }
 
-function analyzeBatch(files: string[]): FileErrors[] {
+function analyzeBatch(files: string[], baseDir: string): FileErrors[] {
     const results: FileErrors[] = [];
     if (files.length === 0) return results;
 
@@ -178,7 +176,7 @@ function analyzeBatch(files: string[]): FileErrors[] {
 
             if (errors.length > 0) {
                 results.push({
-                    file: path.relative(GSRC_DIR, file),
+                    file: path.relative(baseDir, file),
                     errors: errors
                 });
             }
@@ -188,8 +186,8 @@ function analyzeBatch(files: string[]): FileErrors[] {
         // Fallback or recursive split for huge buffers
         if (e.message && e.message.includes('maxBuffer')) {
             const mid = Math.floor(files.length / 2);
-            results.push(...analyzeBatch(files.slice(0, mid)));
-            results.push(...analyzeBatch(files.slice(mid)));
+            results.push(...analyzeBatch(files.slice(0, mid), baseDir));
+            results.push(...analyzeBatch(files.slice(mid), baseDir));
         } else if (e.stdout) {
             // Try to recover partial output
             const output = e.stdout.toString();
@@ -202,7 +200,7 @@ function analyzeBatch(files: string[]): FileErrors[] {
                 const errors = extractErrors(file, xmlContent);
                 if (errors.length > 0) {
                     results.push({
-                        file: path.relative(GSRC_DIR, file),
+                        file: path.relative(baseDir, file),
                         errors: errors
                     });
                 }
@@ -213,9 +211,25 @@ function analyzeBatch(files: string[]): FileErrors[] {
 }
 
 function main() {
+    const args = process.argv.slice(2);
+    if (args.length === 0) {
+        console.error('Error: No target directory provided.');
+        console.error('Usage: ts-node scripts/analyze_failures.ts <path-to-source-code>');
+        console.error('Example: ts-node scripts/analyze_failures.ts ./gsrc');
+        process.exit(1);
+    }
+
+    const targetDirArg = args[0];
+    const GSRC_DIR = path.resolve(process.cwd(), targetDirArg);
+
+    if (!fs.existsSync(GSRC_DIR) || !fs.statSync(GSRC_DIR).isDirectory()) {
+        console.error(`Error: Directory not found or invalid: ${GSRC_DIR}`);
+        process.exit(1);
+    }
+
     const startTime = Date.now();
     try {
-        console.error('Scanning gsrc for .gs and .gsx files...');
+        console.error(`Scanning ${GSRC_DIR} for .gs and .gsx files...`);
         const files = getAllFiles(GSRC_DIR, ['.gs', '.gsx']);
         console.error(`Found ${files.length} files.`);
 
@@ -228,7 +242,7 @@ function main() {
             const batch = files.slice(i, i + BATCH_SIZE);
             if (i % 500 === 0) process.stderr.write(`Processed ${i}/${files.length}\r`);
 
-            const batchResults = analyzeBatch(batch);
+            const batchResults = analyzeBatch(batch, GSRC_DIR);
 
             for (const res of batchResults) {
                 // Log failing files (user visibility)
@@ -252,7 +266,7 @@ function main() {
 
         const report: Report = {
             timestamp: new Date().toISOString(),
-            targetDir: './gsrc',
+            targetDir: targetDirArg,
             summary: {
                 totalFiles: totalFiles,
                 successfulFiles: successfulFiles,
@@ -260,9 +274,9 @@ function main() {
                 totalErrors: totalErrors,
                 errorsByType: errorTypeCounts,
                 filesWithErrors: allFileErrors.map(f => f.file),
-                successRate: ((successfulFiles / totalFiles) * 100).toFixed(2) + '%',
+                successRate: totalFiles > 0 ? ((successfulFiles / totalFiles) * 100).toFixed(2) + '%' : '0.00%',
                 parseTimeSeconds: durationSeconds,
-                filesPerSecond: Math.round(totalFiles / durationSeconds)
+                filesPerSecond: durationSeconds > 0 ? Math.round(totalFiles / durationSeconds) : 0
             },
             filesWithErrors: allFileErrors
         };
