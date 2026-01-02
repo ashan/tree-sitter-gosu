@@ -52,6 +52,7 @@
     "test": "tree-sitter test",
     "compile-grammar": "tsc",
     "generate": "npm run compile-grammar && tree-sitter generate",
+    "prepare": "npm run generate",
     "analyze": "ts-node scripts/analyze_failures.ts",
     "build": "node-gyp rebuild"
   }
