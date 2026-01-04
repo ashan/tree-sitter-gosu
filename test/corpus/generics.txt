@@ -12,10 +12,60 @@ new Map<String, List<Integer>>()
 ---
 
 (source_file
-  (class_declaration (identifier) (type_parameters (type_parameter (identifier))) (class_body))
-  (class_declaration (identifier) (type_parameters (type_parameter (identifier)) (type_parameter (identifier))) (class_body))
-  (function_declaration (identifier) (type_parameters (type_parameter (identifier))) (parameter_list (parameter (identifier) (type_reference (identifier)))) (type_reference (identifier)) (block (return_statement (identifier))))
-  (local_variable_declaration (identifier) (type_reference (identifier) (type_arguments (type_reference (identifier)))))
-  (expression_statement (new_expression (type_reference (identifier) (type_arguments (type_reference (identifier)))) (argument_list)))
-  (expression_statement (new_expression (type_reference (identifier) (type_arguments (type_reference (identifier)) (type_reference (identifier) (type_arguments (type_reference (identifier)))))) (argument_list)))
-)
+  (class_declaration
+    (identifier)
+    (type_parameters
+      (type_parameter
+        (identifier)))
+    (class_body))
+  (class_declaration
+    (identifier)
+    (type_parameters
+      (type_parameter
+        (identifier))
+      (type_parameter
+        (identifier)))
+    (class_body))
+  (function_declaration
+    (identifier)
+    (type_parameters
+      (type_parameter
+        (identifier)))
+    (parameter_list
+      (formal_parameter
+        (identifier)
+        (type_reference
+          (identifier))))
+    (type_reference
+      (identifier))
+    (block
+      (return_statement
+        (identifier))))
+  (local_variable_declaration
+    (identifier)
+    (type_reference
+      (identifier)
+      (type_arguments
+        (type_reference
+          (identifier)))))
+  (expression_statement
+    (new_expression
+      (type_reference
+        (identifier)
+        (type_arguments
+          (type_reference
+            (identifier))))
+      (argument_list)))
+  (expression_statement
+    (new_expression
+      (type_reference
+        (identifier)
+        (type_arguments
+          (type_reference
+            (identifier))
+          (type_reference
+            (identifier)
+            (type_arguments
+              (type_reference
+                (identifier))))))
+      (argument_list))))

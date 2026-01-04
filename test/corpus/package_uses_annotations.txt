@@ -14,9 +14,38 @@ var x = 10;
 ---
 
 (source_file
-  (package_declaration (type_reference (identifier) (identifier) (identifier)))
-  (uses_statement (type_reference (identifier) (identifier) (identifier)))
-  (function_declaration (modifiers (annotation (type_reference (identifier)))) (identifier) (parameter_list) (block))
-  (class_declaration (modifiers (annotation (type_reference (identifier)))) (identifier) (class_body))
-  (local_variable_declaration (modifiers (annotation (type_reference (identifier)) (argument_list (string_template (string_content))))) (identifier) (number_literal))
-)
+  (package_declaration
+    (type_reference
+      (identifier)
+      (identifier)
+      (identifier)))
+  (uses_statement
+    (type_reference
+      (identifier)
+      (identifier)
+      (identifier)))
+  (function_declaration
+    (modifiers
+      (modifier_annotation
+        (type_reference
+          (identifier))))
+    (identifier)
+    (parameter_list)
+    (block))
+  (class_declaration
+    (modifiers
+      (modifier_annotation
+        (type_reference
+          (identifier))))
+    (identifier)
+    (class_body))
+  (local_variable_declaration
+    (modifiers
+      (modifier_annotation
+        (type_reference
+          (identifier))
+        (argument_list
+          (string_template
+            (string_content)))))
+    (identifier)
+    (number_literal)))

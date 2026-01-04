@@ -12,10 +12,30 @@ var z = a == b;
 ---
 
 (source_file
-  (local_variable_declaration (identifier) (primitive_type) (number_literal))
-  (local_variable_declaration (identifier) (binary_expression (identifier) (number_literal)))
-  (expression_statement (assignment_expression (identifier) (binary_expression (identifier) (number_literal))))
-  (local_variable_declaration (identifier) (binary_expression (identifier) (identifier)))
-  (expression_statement (unary_expression (identifier)))
-  (expression_statement (unary_expression (number_literal)))
-)
+  (local_variable_declaration
+    (identifier)
+    (primitive_type)
+    (number_literal))
+  (local_variable_declaration
+    (identifier)
+    (binary_expression
+      (identifier)
+      (number_literal)))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (binary_expression
+        (identifier)
+        (multiply_operator)
+        (number_literal))))
+  (local_variable_declaration
+    (identifier)
+    (binary_expression
+      (identifier)
+      (identifier)))
+  (expression_statement
+    (unary_expression
+      (identifier)))
+  (expression_statement
+    (unary_expression
+      (number_literal))))

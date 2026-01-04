@@ -22,20 +22,30 @@ enum Status {
   (enum_declaration
     (identifier)
     (enum_body
-      (enum_constant (identifier))
-      (enum_constant (identifier))
-      (enum_constant (identifier))))
+      (enum_constant
+        (identifier))
+      (enum_constant
+        (identifier))
+      (enum_constant
+        (identifier))))
   (enum_declaration
     (identifier)
     (enum_body
-      (enum_constant (identifier))
-      (enum_constant (identifier))
+      (enum_constant
+        (identifier))
+      (enum_constant
+        (identifier))
+      (empty_statement)
       (local_variable_declaration
         (identifier)
-        (type_reference (identifier)))
+        (type_reference
+          (identifier)))
       (constructor_declaration
-        (parameter_list 
-            (parameter (identifier) (type_reference (identifier))))
+        (parameter_list
+          (formal_parameter
+            (identifier)
+            (type_reference
+              (identifier))))
         (block
           (expression_statement
             (assignment_expression
@@ -55,12 +65,14 @@ var y = o typeof String
     (identifier)
     (type_check_expression
       (identifier)
-      (type_reference (identifier))))
+      (type_reference
+        (identifier))))
   (local_variable_declaration
     (identifier)
     (type_check_expression
       (identifier)
-      (type_reference (identifier)))))
+      (type_reference
+        (identifier)))))
 
 ==================
 Lambdas Empty
@@ -76,4 +88,5 @@ var l1 = \ -> print("Empty")
       (call_expression
         (identifier)
         (argument_list
-          (string_template (string_content)))))))
+          (string_template
+            (string_content)))))))

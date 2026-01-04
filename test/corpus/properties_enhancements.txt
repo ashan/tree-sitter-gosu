@@ -20,11 +20,40 @@ enhancement StringEnhancement : String {
 ---
 
 (source_file
-  (class_declaration (identifier) (class_body
-    (property_get_declaration (identifier) (type_reference (identifier)) (block (return_statement (identifier))))
-    (property_set_declaration (identifier) (parameter (identifier) (type_reference (identifier))) (block (expression_statement (assignment_expression (identifier) (identifier)))))
-  ))
-  (enhancement_declaration (identifier) (type_reference (identifier)) (class_body
-    (function_declaration (identifier) (parameter_list) (block (expression_statement (call_expression (identifier) (argument_list (identifier))))))
-  ))
-)
+  (class_declaration
+    (identifier)
+    (class_body
+      (property_get_declaration
+        (identifier)
+        (parameter_list)
+        (type_reference
+          (identifier))
+        (block
+          (return_statement
+            (identifier))))
+      (property_set_declaration
+        (identifier)
+        (parameter_list
+          (formal_parameter
+            (identifier)
+            (type_reference
+              (identifier))))
+        (block
+          (expression_statement
+            (assignment_expression
+              (identifier)
+              (identifier)))))))
+  (enhancement_declaration
+    (identifier)
+    (type_reference
+      (identifier))
+    (class_body
+      (function_declaration
+        (identifier)
+        (parameter_list)
+        (block
+          (expression_statement
+            (call_expression
+              (identifier)
+              (argument_list
+                (this_expression)))))))))
