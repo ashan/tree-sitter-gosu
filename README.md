@@ -71,8 +71,21 @@ console.log(tree.rootNode.toString());
 npm test
 ```
 
-### Analysis Tool
-A failure analysis script is included to batch-parse directories and report errors.
+### Bulk Parsing & Analysis tool
+
+The repository includes a script to batch-parse entire directories of Gosu source code. This is useful for validating the parser against large codebases (e.g., standard libraries or application code).
+
+**Usage:**
 ```bash
-npx ts-node scripts/analyze_failures.ts ./your-gsrc-dir
+npm run analyze -- /path/to/your/gosu/files
 ```
+
+**Features:**
+- Recursively finds all `.gs` and `.gsx` files in the target directory.
+- Parses files in parallel batches.
+- Reports failures with file paths and error details.
+- Generates a detailed JSON report (`analysis_report.json`) containing:
+  - Success/Failure counts and rates.
+  - List of all failed files.
+  - precise locations of parsing errors.
+  - Performance metrics (files/sec).
