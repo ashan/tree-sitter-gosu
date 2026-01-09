@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-01-08T03:20:47.571Z",
+  "targetDir": "../tree-sitter-gosu-template/gsrc",
+  "summary": {
+    "totalFiles": 5281,
+    "successfulFiles": 5280,
+    "failedFilesCount": 1,
+    "totalErrors": 1,
+    "errorsByType": {
+      "ERROR": 1
+    },
+    "filesWithErrors": [
+      "nz/co/acc/lob/common/ui/ActivityUIHelper_ACC.gs"
+    ],
+    "successRate": "99.98%",
+    "parseTimeSeconds": 15.899,
+    "filesPerSecond": 332
+  },
+  "filesWithErrors": [
+    {
+      "file": "nz/co/acc/lob/common/ui/ActivityUIHelper_ACC.gs",
+      "errors": [
+        {
+          "type": "ERROR",
+          "position": "[69:14]-[69:18]",
+          "text": "i in"
+        }
+      ]
+    }
+  ]
+}
