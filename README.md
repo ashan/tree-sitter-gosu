@@ -56,6 +56,43 @@ foreach (var i in processor.iterator()) {  // ← Add 'var'
 
 **Impact:** Affects only 1 file out of 5,281 tested (0.019%). All other foreach patterns parse correctly.
 
+## Installation
+
+### Node.js Compatibility
+
+**Current prebuilds:** macOS (darwin-arm64) only
+
+The parser works on all Node.js versions when prebuilt binaries are available. If installing from GitHub on platforms without prebuilds, compilation from source requires:
+- **Node.js v20 or v22 (LTS)** - Recommended
+- **Node.js v25+** - May require additional configuration
+
+### Installing from GitHub
+
+```bash
+npm install github:ashan/tree-sitter-gosu
+```
+
+### Contributing Prebuilds for Other Platforms
+
+If you're on **Windows** or **Linux** and want to contribute prebuilds:
+
+```bash
+# Clone and build
+git clone https://github.com/ashan/tree-sitter-gosu.git
+cd tree-sitter-gosu
+npm install
+
+# Generate prebuilds for your platform
+npx prebuildify --napi --strip
+
+# Commit and push
+git add -f prebuilds/
+git commit -m "chore: add prebuilds for [your-platform]"
+git push
+```
+
+**Note:** The `-f` flag is required because `prebuilds/` is in `.gitignore` by default.
+
 
 ## Usage
 
