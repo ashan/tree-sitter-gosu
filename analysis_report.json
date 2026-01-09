@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-01-08T03:20:47.571Z",
-  "targetDir": "../tree-sitter-gosu-template/gsrc",
+  "timestamp": "2026-01-09T03:26:10.849Z",
+  "targetDir": "./gsrc",
   "summary": {
     "totalFiles": 5281,
     "successfulFiles": 5280,
@@ -13,8 +13,8 @@
       "nz/co/acc/lob/common/ui/ActivityUIHelper_ACC.gs"
     ],
     "successRate": "99.98%",
-    "parseTimeSeconds": 15.899,
-    "filesPerSecond": 332
+    "parseTimeSeconds": 15.798,
+    "filesPerSecond": 334
   },
   "filesWithErrors": [
     {

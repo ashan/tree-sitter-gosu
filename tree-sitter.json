@@ -8,8 +8,7 @@
       "scope": "source.gosu",
       "file-types": [
         "gsx",
-        "gs",
-        "gst"
+        "gs"
       ],
       "injection-regex": "^gosu$",
       "class-name": "TreeSitterGosu"
