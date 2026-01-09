@@ -20,15 +20,42 @@ The parser has been validated against a massive corpus of over 5000 Gosu files.
 - **Failures**: 1 file (known edge case, see below)
 
 ### Known Limitations
-There is one known parsing ambiguity related to the interaction between **Generic Types** and **Binary Expressions** in specific contexts where `foreach` is involved.
 
-**Example Failure Pattern:**
+#### Optional Semicolon + Type Cast + Foreach
+
+There is one known parsing limitation when using `foreach` immediately after a variable declaration with a **long qualified generic type cast** and **no semicolon**.
+
+**Problematic Pattern:**
 ```gosu
-var x = someObject as Type<AssignableQueue>
-foreach (i in list) { ... }
+var processor = call() as very.long.qualified.TypeName<GenericArg>
+foreach (i in processor.iterator()) {
+  // Parser may fail here
+}
 ```
-In extremely rare cases, the parser may interpret the closing `>` of the generic type and the following `foreach` keyword as part of a binary comparison (e.g., `Type < AssignableQueue > foreach`). This is a limitation of the GLR parser's ability to disambiguate this specific lookahead without semantic analysis.
-*Impact*: Negligible (1 file out of 5281).
+
+**Root Cause:**  
+Gosu allows optional semicolons. When a line ends with a complex type cast like `as Type<Generic>`, the parser cannot definitively determine if the statement has ended or continues on the next line. In rare cases, it may interpret `foreach` as an identifier (continuing the expression) rather than a statement keyword.
+
+**Solution:**  
+Add a semicolon after the type cast:
+```gosu
+var processor = call() as very.long.qualified.TypeName<GenericArg>;  // ← Add semicolon
+foreach (i in processor.iterator()) {
+  // Now parses correctly
+}
+```
+
+**Alternative:**  
+Use the `var` keyword in the foreach:
+```gosu
+var processor = call() as very.long.qualified.TypeName<GenericArg>
+foreach (var i in processor.iterator()) {  // ← Add 'var'
+  // Also parses correctly
+}
+```
+
+**Impact:** Affects only 1 file out of 5,281 tested (0.019%). All other foreach patterns parse correctly.
+
 
 ## Usage
 
