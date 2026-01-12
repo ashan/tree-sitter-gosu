@@ -81,7 +81,7 @@ The external scanner (`src/scanner.c`) handles context-sensitive lexing:
 flowchart LR
     subgraph "Scanner Responsibilities"
         NUM[Number Literals<br/>0xAF, 1.5bd, 3.14f]
-        INTERP[String Interpolation<br/>$${nested} handling]
+        INTERP[String Interpolation<br/>Nested expressions]
         CONTEXT[Context Tracking<br/>State management]
     end
     
