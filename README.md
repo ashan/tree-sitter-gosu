@@ -138,7 +138,7 @@ grammar.ts
 ### Prerequisites
 
 - Node.js 18+ (Node 20 or 22 LTS recommended)
-- Build tools for native compilation
+- **Build Tools**: **Optional** (Prebuilds included for Windows/macOS/Linux). Required only for custom builds.
 
 **macOS:**
 ```bash
