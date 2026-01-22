@@ -391,20 +391,11 @@ Contributions welcome! Here's how:
 
 We need prebuilds for **Linux** and **Windows**:
 
-```bash
-# Clone and install
-git clone https://github.com/ashan/tree-sitter-gosu.git
-cd tree-sitter-gosu
-npm install
-
-# Generate prebuild
-npx prebuildify --napi --strip
-
-# Commit (use -f because prebuilds/ is gitignored)
-git add -f prebuilds/
-git commit -m "chore: add prebuilds for linux-x64"
-git push
-```
+We use GitHub Actions to automatically generate prebuilds for Linux, macOS, and Windows.
+To trigger a new build, simply push to the `main` branch. The workflow will:
+1. Build for all platforms
+2. Commit the prebuilds to the `prebuilds/` directory
+3. Push the changes back to the repository
 
 ### Reporting Bugs
 
